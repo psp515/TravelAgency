@@ -53,6 +53,8 @@ To setup a angular project setup followe readme from website folder.
 
 ### License
 
+Distributed under the MIT License. See `LICENSE.txt` for more information.
+
 ### Contact
 
 <div align="center">
