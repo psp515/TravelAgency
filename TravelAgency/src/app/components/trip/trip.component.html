@@ -1,1 +1,40 @@
-<p>trip works!</p>
+<div class="card">
+  <div class="card-rotatable">
+    <div class="card-front">
+      <div class="card-photo">
+        <div class="card-image">
+          <img class="card-image-image" src="{{this.trip.image }}" alt="x">
+        </div>
+        <section class="card-image-title">
+          <div class="card-image-title-text">
+            {{trip.name | uppercase}}
+          </div>
+        </section>
+      </div>
+      <section class="card-description">
+
+        <div class="card-description-item"> 10 dniowa wycieczka </div>
+        <div class="card-description-line"> </div>
+        <div class="card-description-item"> 10 osób </div>
+        <div class="card-description-line"> </div>
+        <div class="card-description-item"> 10 gór </div>
+      </section>
+    </div>
+
+    <div class="card-back">
+      <div class="card-back-description">
+        Cena wycieczki
+      </div>
+
+      <div class="card-back-price">
+        {{trip.price}} {{trip.currency}}
+      </div>
+
+
+      <a class="card-back-button" href="#">
+        Więcej Informacji!
+      </a>
+
+    </div>
+  </div>
+</div>

@@ -1,1 +1,6 @@
-<p>triplist works!</p>
+<div class="list">
+  <div *ngFor="let trip of trips">
+
+    <app-trip [trip]="trip"></app-trip>
+  </div>
+</div>
