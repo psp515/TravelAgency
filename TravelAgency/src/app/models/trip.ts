@@ -14,7 +14,8 @@ export class Trip
   currency:string;
   likes:number;
   available:number;
-  selected:number;
+  selected:number=0;
+  shortDescription:string;
   constructor(id:number= -1,
               name:string = "",
               country:string = "",
@@ -26,6 +27,7 @@ export class Trip
               currency:string = "",
               likes:number = 0,
               available:number = 0,
+              shortDescription:string="",
               selected:number=0)
   {
     this.id = id;
@@ -40,6 +42,7 @@ export class Trip
     this.likes = likes;
     this.available = available;
     this.selected = selected;
+    this.shortDescription = shortDescription;
   }
 
 }

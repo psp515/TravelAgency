@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {TripService} from "../../services/TripService";
 import {Trip} from "../../models/trip";
 
@@ -7,19 +7,27 @@ import {Trip} from "../../models/trip";
   templateUrl: './triplist.component.html',
   styleUrls: ['./triplist.component.css']
 })
-export class TriplistComponent {
+export class TriplistComponent implements OnInit {
 
-  trips: any[] = [];
+  trips: Trip[] = [];
 
-  constructor(private tripService: TripService) {
+  selectedTrips: number = 0;
 
-    fetch("./assets/data/trips.json")
-      .then(res => res.json())
-      .then(json =>
-      {
-        this.trips = json.trips
-        console.log(this.trips)
-      })
+  constructor(private  tripService: TripService) {
+    this.tripService = tripService
+    this.trips = this.tripService.getItems()
+  }
+
+  ngOnInit(){
+    this.trips = this.tripService.getItems()
+  }
+
+  refreshSelectedTrips($event: string){
+    this.selectedTrips = this.trips.reduce((accumulator, trip) => {return accumulator + trip.selected;}, 0);
+  }
+
+  refreshTrips(event: string){
+    this.trips = this.tripService.getItems()
   }
 
 }

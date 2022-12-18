@@ -1,8 +1,18 @@
 .list
 {
   display: flex;
+  width: 100vw;
+  min-height: 100vh;
+  height: auto;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   background: linear-gradient(to right, #F5F7FA, #B8C6DB);
+}
+
+
+.cart{
+  position: fixed;
+  right: 50px;
+  bottom: 50px;
 }

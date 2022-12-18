@@ -1,6 +1,16 @@
+
 <div class="list">
   <div *ngFor="let trip of trips">
 
-    <app-trip [trip]="trip"></app-trip>
+    <app-trip [trip]="trip"
+              (refreshSelected)="refreshSelectedTrips($event)"
+              (refreshTrips)="refreshTrips($event)">
+
+    </app-trip>
   </div>
+
+  <app-cart class="cart" [selectedTrips]="this.selectedTrips">
+
+  </app-cart>
+
 </div>

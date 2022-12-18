@@ -10,7 +10,6 @@ import { CartComponent } from './components/cart/cart.component';
 
 import { AppRoutingModule } from './app-routing.module';
 import {RouterLink, RouterOutlet} from "@angular/router";
-import { TripbuttonComponent } from './components/tripbutton/tripbutton.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +19,6 @@ import { TripbuttonComponent } from './components/tripbutton/tripbutton.componen
     AddtripComponent,
     NavbarComponent,
     CartComponent,
-    TripbuttonComponent
   ],
   imports: [
     BrowserModule,

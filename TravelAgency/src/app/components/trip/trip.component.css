@@ -1,38 +1,41 @@
-
 .card {
   display: flex;
-  min-height: 500px;
+  min-height: 600px;
   height: 50vh;
-  max-width: 450px;
+  max-height: 800px;
+  max-width: 400px;
   min-width: 300px;
   width: 27vw;
-  perspective: 800px;
+  perspective: 1500px;
   margin-left: 2vw;
   margin-right: 2vw;
-  margin-top: 6vh;
-  margin-bottom: 6vh;
+  margin-top: 3vh;
+  margin-bottom: 3vh;
   padding: 0;
   background-color: transparent;
-  transition: 200ms linear;
+  transition: 200ms ease-in-out;
 }
+
 .card-rotatable{
   position: relative;
   width: 100%;
   height: 100%;
   border-radius:15px;
   box-shadow: 0 0 38px -11px rgba(55, 55, 55, 1);
-  /* Animacja obrotu  */
-  transition: transform 600ms;
-  /* obrót karty */
+  transition: transform 500ms;
   transform-style: preserve-3d;
   background-color:#F5F7FA;
 
 }
+
 .card:hover .card-rotatable{
   transform:rotateY(180deg);
 }
 
-.card-photo {}
+.card-photo {
+
+}
+
 .card-front{
   display:flex;
   flex-direction: column;
@@ -43,9 +46,11 @@
   background-color: transparent;
   border-radius: 15px;
 }
+
 .card-image{
 
 }
+
 .card-image:before {
   content:"";
   width: 100%;
@@ -55,6 +60,7 @@
   position: absolute;
   transform: skewY(-3deg);
 }
+
 .card-image-image{
   width:100%;
   height:256px;
@@ -62,7 +68,6 @@
   border-top-left-radius:15px;
   border-top-right-radius: 15px;
 }
-
 
 .card-image-title {
   padding: 0;
@@ -73,9 +78,9 @@
   flex-direction: column;
   z-index: 4;
 }
+
 .card-image-title-text {
-  background: darkslateblue;
-  background: linear-gradient(90deg, rgba(184, 198, 219,0.6) 0%, rgba(184, 198, 219, 0.7) 0%);
+  background: linear-gradient(90deg, rgba(229, 189, 246,0.7) 0%, rgba(229, 189, 246, 0.8) 0%);
   width: fit-content;
   align-self: center;
   z-index: 4;
@@ -96,15 +101,19 @@
   flex-direction: column;
   justify-content: space-evenly;
 }
+
 .card-description-item{
   font-size: 18px;
   color: #333833;
+  width: 80%;
   align-self: center;
 }
+
 .card-description-line{
   background-color: lightgray;
   width: 80%;
   align-self: center;
+  text-align: center;
   height: 2px;
   border-radius: 2px;
 }
@@ -122,19 +131,22 @@
   transform: rotateY(180deg);
   border-radius: 15px;
 }
+
 .card-back-description{
   font-weight:bold;
-  font-size:22px;
+  font-size:20px;
   color: #333833;
   align-self: center;
 }
+
 .card-back-price{
   font-size:68px;
   color: #333833;
   align-self: center;
 }
-.card-back-button{
 
+.card-back-button{
+  z-index: 10;
   text-decoration: none;
   color:#333833;
   background-color: #E5BDF6;
@@ -148,9 +160,90 @@
   transition: 300ms linear;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
+
 .card-back-button:hover {
   letter-spacing: 2px;
 }
 
+.card-round-image{
+  border-radius: 50%;
+  object-fit: fill;
+  user-select: none;
+  width: 160px;
+  height: 160px;
+  margin-bottom: 30px;
+  align-self: center;
+
+}
+
+.buttons-section{
+  z-index: 6;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.buttons-section-button{
+  background-color: #D8DEDE;
+  border-radius: 14px;
+  padding: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  height: 50px;
+  margin-left: 30px;
+  margin-right: 30px;
+  align-self: center;
+  justify-self: center;
+  justify-content: center;
+  align-content: center;
+  transition: 0.4s ease-in-out;
+  cursor: pointer;
+  display: flex;
+}
+
+.left-button
+{
+  position: absolute;
+  left: 3vw;
+  width: 50px;
+  border-radius: 50%;
+}
+
+.right-button
+{
+
+  position: absolute;
+  right: 3vw;
+  width: 50px;
+  border-radius: 50%;
+}
+
+
+.buttons-section-button:hover{
+  scale: 1.2;
+}
+
+.buttons-section-button-text{
+  align-self: center;
+  padding: 0;
+  margin: 0;
+  font-weight: 900;
+  font-size: 30px;
+  color: #333833;
+  user-select: none;
+}
+
+.backgrounder {
+  align-self: center;
+  align-content: center;
+  justify-content: center;
+  border-radius: 14px;
+  min-width: 50px;
+  width: 3vw;
+  height: 40px;
+  display: flex;
+  transition: 0.4s ease-in-out;
+}
 
 

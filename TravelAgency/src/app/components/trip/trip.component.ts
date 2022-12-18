@@ -1,5 +1,6 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Trip} from "../../models/trip";
+import {TripService} from "../../services/TripService";
 
 @Component({
   selector: 'app-trip',
@@ -10,8 +11,60 @@ export class TripComponent {
 
   @Input() trip: Trip
 
-  constructor() {
+  constructor(private tripService: TripService) {
     this.trip = new Trip();
+  }
+
+  @Output() refreshSelected = new EventEmitter<string>();
+  @Output() refreshTrips = new EventEmitter<string>();
+
+  callParent = () => this.refreshSelected.emit('refreshSelected');
+
+  plusClicked(){
+    if(this.trip.selected == this.trip.available)
+    {
+      alert("Maksymalna liczba miejsc.");
+      return;
+    }
+
+    this.trip.selected+=1;
+    this.callParent();
+  }
+
+  minusClicked(){
+
+    if(this.trip.selected == 0)
+    {
+      alert("Minimalna liczba miejsc.");
+      return;
+    }
+
+    this.trip.selected-=1;
+    this.callParent();
+  }
+
+  deleteTrip(){
+    this.tripService.deleteItem(this.trip.id)
+    this.refreshTrips.emit('refreshTrips')
+  }
+
+  colorfiller = () =>
+  {
+    let value = this.trip.selected / this.trip.available;
+
+    if(value < 0.8)
+      return 'transparent';
+
+    if(value < 0.85)
+      return '#ffcbd1';
+
+    if(value < 0.9)
+      return '#f69697';
+
+    if(value < 0.95)
+      return '#ee6bb3';
+
+    return '#f94449';
   }
 
 }

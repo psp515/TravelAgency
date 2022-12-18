@@ -1,0 +1,32 @@
+
+
+.cart{
+  min-width: 260px;
+  min-height: 80px;
+  width: 10vw;
+  height: 5vh;
+  background-color: #E5BDF6;
+  border-radius: 40px;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  transition: 0.4s ease-in-out;
+}
+
+
+.text{
+  color: #333833;
+  font-size: 26px;
+  font-weight: 900;
+}
+
+.cart_img{
+  object-fit: contain;
+  width: 56px;
+  height: 56px;
+  padding: 3px;
+  align-self: center;
+  margin: 0;
+}
