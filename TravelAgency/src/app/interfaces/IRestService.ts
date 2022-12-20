@@ -1,5 +1,7 @@
-export interface IRestService<T>{
-  getItems(): Array<T>;
+export interface IRestService<T>
+{
+  getItems(): Promise<Array<T>>;
+
   getItem(id: number): T;
 
   addItem(item: T): void;

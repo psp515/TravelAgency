@@ -12,7 +12,7 @@
   margin-top: 3vh;
   margin-bottom: 3vh;
   padding: 0;
-  background-color: transparent;
+  border-radius: 17px;
   transition: 200ms ease-in-out;
 }
 

@@ -44,8 +44,9 @@ export class TripComponent {
   }
 
   deleteTrip(){
-    this.tripService.deleteItem(this.trip.id)
-    this.refreshTrips.emit('refreshTrips')
+    this.tripService.deleteItem(this.trip.id);
+    this.refreshTrips.emit('refreshTrips');
+    this.callParent();
   }
 
   colorfiller = () =>
@@ -65,6 +66,32 @@ export class TripComponent {
       return '#ee6bb3';
 
     return '#f94449';
+  }
+
+  borderFiller = () =>
+  {
+    if (this.trip.cheapestTrip)
+      return '9px solid #E5BDF6';
+
+
+    if (this.trip.theMostExpensiveTrip)
+      return '9px solid #83C760';
+
+    console.log('here')
+    return 'none';
+  }
+
+  backgroundColorFiller = () =>
+  {
+    if (this.trip.cheapestTrip)
+      return '#E5BDF6';
+
+
+    if (this.trip.theMostExpensiveTrip)
+      return '#83C760';
+
+    console.log('here')
+    return 'transparent';
   }
 
 }

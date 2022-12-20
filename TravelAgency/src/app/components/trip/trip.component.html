@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card" [ngStyle]="{'border': borderFiller(),'background-color':backgroundColorFiller()}">
   <div class="card-rotatable">
     <div class="card-front">
       <div class="card-photo">
@@ -23,8 +23,7 @@
         <div class="card-description-line"> </div>
         <div class="card-description-item"> {{trip.shortDescription}}</div>
       </section>
-    </div>
-
+    </div >
     <div class="card-back">
 
 
