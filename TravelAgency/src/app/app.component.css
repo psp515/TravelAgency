@@ -1,0 +1,13 @@
+main {
+  min-height:80vh;
+  margin-top: 70px;
+}
+nav {
+  position: fixed;
+  backface-visibility:hidden;
+  width:100%;
+  top: 0;
+  left:0;
+  z-index: 10;
+  height: auto;
+}

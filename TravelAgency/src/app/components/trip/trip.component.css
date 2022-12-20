@@ -9,7 +9,7 @@
   perspective: 1500px;
   margin-left: 2vw;
   margin-right: 2vw;
-  margin-top: 3vh;
+  margin-top: 6vh;
   margin-bottom: 3vh;
   padding: 0;
   border-radius: 17px;
@@ -169,8 +169,8 @@
   border-radius: 50%;
   object-fit: fill;
   user-select: none;
-  width: 160px;
-  height: 160px;
+  width: 120px;
+  height: 120px;
   margin-bottom: 30px;
   align-self: center;
 

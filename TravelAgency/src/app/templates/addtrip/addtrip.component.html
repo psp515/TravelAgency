@@ -1,0 +1,117 @@
+<div class="container">
+  <div>
+    <h1>New Trip Form</h1>
+    <form (ngSubmit)="onSubmit()" #tripForm="ngForm">
+
+      <h3>Overall Informations</h3>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control"
+               id="name"
+               maxlength="30"
+               required
+               [(ngModel)]="model.name" name="name"
+               #name="ngModel">
+        <div [hidden]="name.valid || name.pristine"
+             class="alert alert-danger">
+          Trip name is required.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="country">Country</label>
+        <select class="form-control"  id="country"
+                required
+                [(ngModel)]="model.country" name="country">
+          <option *ngFor="let c of countries" [value]="c">{{c}}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="available">Avaliable Trips</label>
+        <input type="number"
+               min="1"
+               class="form-control"
+               id="available"
+               required
+               [(ngModel)]="model.available"
+               name="available"
+               #available="ngModel">
+        <div [hidden]="available.valid || available.pristine"
+             class="alert alert-danger">
+          Number of avaliable trips must be grater than 0.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="price">Cost</label>
+        <input type="number"
+               min="0"
+               class="form-control"
+               id="price"
+               required
+               [(ngModel)]="model.price"
+               name="price"
+               #price="ngModel">
+        <div [hidden]="price.valid"
+             class="alert alert-danger">
+          Invalid price, must be greater than 0.
+        </div>
+      </div>
+
+      <h3>Other Informations</h3>
+
+      <div class="form-group">
+        <label for="currency">Currency</label>
+        <select class="form-control"  id="currency"
+                required
+                [(ngModel)]="model.currency" name="currency">
+          <option *ngFor="let c of currencies" [value]="c">{{c}}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="available">Trpis Starts</label>
+        <input type="date"
+               class="form-control"
+               id="trpistart"
+               required
+               [ngModel] ="model.tripStart | date:'yyyy-MM-dd'"
+               (ngModelChange)="model.tripStart = $event"
+               name="trpistart"
+               #trpistart="ngModel">
+        <div [hidden]="trpistart.valid || trpistart.pristine"
+             class="alert alert-danger">
+          Select start of the trip.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="tripEnd">Trip Ends</label>
+        <input type="date"
+               class="form-control"
+               id="tripEnd"
+               required
+               [ngModel] ="model.tripEnd | date:'yyyy-MM-dd'"
+               (ngModelChange)="model.tripEnd = $event"
+               name="tripEnd"
+               #tripEnd="ngModel">
+        <div [hidden]="tripEnd.valid || tripEnd.pristine"
+             class="alert alert-danger">
+          Number of avaliable trips must be grater than 0.
+        </div>
+      </div>
+
+      <button type="submit"
+              class="btn btn-success marginer"
+              [disabled]="!tripForm.form.valid">Add Trip</button>
+
+      <button type="button"
+              class="btn btn-default marginer"
+              (click)="refreshData(); tripForm.reset()">Refresh Form</button>
+
+    </form>
+  </div>
+</div>
+
+

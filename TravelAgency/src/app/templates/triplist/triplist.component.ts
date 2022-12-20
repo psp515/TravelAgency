@@ -15,7 +15,6 @@ export class TriplistComponent implements OnInit {
 
   constructor(private  tripService: TripService) {
     this.tripService = tripService
-    this.trips = this.tripService.getItems()
   }
 
   ngOnInit(){

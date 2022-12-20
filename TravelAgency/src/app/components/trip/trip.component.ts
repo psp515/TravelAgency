@@ -49,8 +49,7 @@ export class TripComponent {
     this.callParent();
   }
 
-  colorfiller = () =>
-  {
+  colorfiller = () => {
     let value = this.trip.selected / this.trip.available;
 
     if(value < 0.8)
@@ -68,8 +67,7 @@ export class TripComponent {
     return '#f94449';
   }
 
-  borderFiller = () =>
-  {
+  borderFiller = () => {
     if (this.trip.cheapestTrip)
       return '9px solid #E5BDF6';
 
@@ -77,12 +75,10 @@ export class TripComponent {
     if (this.trip.theMostExpensiveTrip)
       return '9px solid #83C760';
 
-    console.log('here')
     return 'none';
   }
 
-  backgroundColorFiller = () =>
-  {
+  backgroundColorFiller = () => {
     if (this.trip.cheapestTrip)
       return '#E5BDF6';
 
@@ -90,7 +86,6 @@ export class TripComponent {
     if (this.trip.theMostExpensiveTrip)
       return '#83C760';
 
-    console.log('here')
     return 'transparent';
   }
 

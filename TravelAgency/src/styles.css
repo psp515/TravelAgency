@@ -2,6 +2,8 @@
 body{
   margin: 0;
   padding: 0;
+  height: 100vh;
+  background: linear-gradient(to right, #F5F7FA, #B8C6DB);
 }
 
 .app{
