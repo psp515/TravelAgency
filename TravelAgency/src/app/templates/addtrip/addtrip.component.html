@@ -71,18 +71,18 @@
       </div>
 
       <div class="form-group">
-        <label for="available">Trpis Starts</label>
+        <label for="tripStart">Trpis Starts</label>
         <input type="date"
                class="form-control"
-               id="trpistart"
+               id="tripStart"
                required
                [ngModel] ="model.tripStart | date:'yyyy-MM-dd'"
                (ngModelChange)="model.tripStart = $event"
-               name="trpistart"
-               #trpistart="ngModel">
-        <div [hidden]="trpistart.valid || trpistart.pristine"
+               name="tripStart"
+               #tripStart="ngModel">
+        <div [hidden]="(tripStart.valid || tripStart.pristine)"
              class="alert alert-danger">
-          Select start of the trip.
+          Select valid start of the trip.
         </div>
       </div>
 
@@ -96,9 +96,57 @@
                (ngModelChange)="model.tripEnd = $event"
                name="tripEnd"
                #tripEnd="ngModel">
-        <div [hidden]="tripEnd.valid || tripEnd.pristine"
+        <div [hidden]="(tripEnd.valid || tripEnd.pristine) && tripStart.value < tripEnd.value"
              class="alert alert-danger">
-          Number of avaliable trips must be grater than 0.
+          Must follows start date.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="image">Image Link</label>
+        <input type="text"
+               class="form-control"
+               id="image"
+               required
+               [ngModel] ="model.image"
+               name="image"
+               #image="ngModel">
+        <div [hidden]="(image.valid || image.pristine)"
+             class="alert alert-danger">
+          Must be valid url.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="shortDescription">Trip Short Description</label>
+        <textarea type="text"
+               class="form-control"
+               maxlength="100"
+               id="shortDescription"
+               required
+               [ngModel] ="model.shortDescription"
+               name="shortDescription"
+                  #shortDescription="ngModel"></textarea>
+        <div [hidden]="(shortDescription.valid || shortDescription.pristine)"
+             class="alert alert-danger">
+          Must be a short trip description max. 100 characters.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Trip Description</label>
+        <textarea type="text"
+               class="form-control"
+               minlength="30"
+               maxlength="700"
+               id="description"
+               required
+               [ngModel] ="model.description"
+               name="description"
+                  #description="ngModel"></textarea>
+        <div [hidden]="(description.valid || description.pristine)"
+             class="alert alert-danger">
+          Must be a description. (30-700 characters)
         </div>
       </div>
 

@@ -20,7 +20,10 @@ export class AddtripComponent {
   {
     this.model.id = (new Date).getTime()
     this.model.likes = 0
-    console.log(this.model)
+
+    this.tripService.addItem(this.model)
+    alert('Dodano wycieczkę do' + this.model.country)
+    this.refreshData()
   }
 
   refreshData()

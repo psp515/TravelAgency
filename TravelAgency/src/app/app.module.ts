@@ -12,6 +12,8 @@ import {RouterLink, RouterOutlet} from "@angular/router";
 import {AddtripComponent} from "./templates/addtrip/addtrip.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatStepperModule} from "@angular/material/stepper";
+import { CartPageComponent } from './templates/cart-page/cart-page.component';
+import { TripPageComponent } from './templates/trip-page/trip-page.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import {MatStepperModule} from "@angular/material/stepper";
     TripComponent,
     NavbarComponent,
     CartComponent,
-    AddtripComponent
+    AddtripComponent,
+    CartPageComponent,
+    TripPageComponent
   ],
   imports: [
     BrowserModule,

@@ -2,11 +2,13 @@
 
 .cart{
   min-width: 260px;
-  min-height: 80px;
+  min-height: 50px;
   width: 10vw;
   height: 5vh;
   background-color: #E5BDF6;
   border-radius: 40px;
+  padding: 0;
+  flex-wrap: wrap;
   display: flex;
   flex-direction: row;
   align-content: center;
@@ -16,17 +18,24 @@
 }
 
 
-.text{
+.centredtext{
   color: #333833;
+  padding-top: 2px;
   font-size: 26px;
+  padding-bottom: 2px;
   font-weight: 900;
+  margin: 0;
+  align-self: center;
+  justify-self: center;
+  text-underline: none;
 }
 
 .cart_img{
   object-fit: contain;
-  width: 56px;
-  height: 56px;
+  width: 48px;
+  height: 48px;
   padding: 3px;
+  padding-right: 10px;
   align-self: center;
   margin: 0;
 }

@@ -44,6 +44,14 @@ export class TripService
 
   }
 
+  addItem(trip:Trip)
+  {
+    this.trips.push(trip)
+    this.filteredTrips.push(trip)
+    this.filterItems()
+    this.updateExtremes()
+  }
+
   deleteItem(id:number) {
     this.filteredTrips = this.filteredTrips.filter(trip => trip.id !== id);
     this.trips = this.trips.filter(trip => trip.id !== id);
