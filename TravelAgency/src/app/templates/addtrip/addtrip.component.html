@@ -1,5 +1,5 @@
 <div class="container">
-  <div>
+  <div class="form">
     <h1>New Trip Form</h1>
     <form (ngSubmit)="onSubmit()" #tripForm="ngForm">
 
@@ -62,7 +62,7 @@
       <h3>Other Informations</h3>
 
       <div class="form-group">
-        <label for="currency">Currency</label>
+        <label for="currency">CurrencyConverter</label>
         <select class="form-control"  id="currency"
                 required
                 [(ngModel)]="model.currency" name="currency">
@@ -96,24 +96,9 @@
                (ngModelChange)="model.tripEnd = $event"
                name="tripEnd"
                #tripEnd="ngModel">
-        <div [hidden]="(tripEnd.valid || tripEnd.pristine) && tripStart.value < tripEnd.value"
+        <div [hidden]="(tripEnd.valid || tripEnd.pristine) && (tripStart.value < tripEnd.value || tripEnd.pristine)"
              class="alert alert-danger">
           Must follows start date.
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="image">Image Link</label>
-        <input type="text"
-               class="form-control"
-               id="image"
-               required
-               [ngModel] ="model.image"
-               name="image"
-               #image="ngModel">
-        <div [hidden]="(image.valid || image.pristine)"
-             class="alert alert-danger">
-          Must be valid url.
         </div>
       </div>
 
@@ -160,6 +145,7 @@
 
     </form>
   </div>
+  <app-trip class="trip" [disableButtons]="true" [trip]="model"></app-trip>
 </div>
 
 

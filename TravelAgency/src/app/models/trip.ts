@@ -13,6 +13,7 @@ export class Trip {
   currency: string;
   likes: number;
   available: number;
+  stars: number;
   selected: number = 0;
   shortDescription: string;
   cheapestTrip: boolean = false;
@@ -30,7 +31,8 @@ export class Trip {
               likes: number = 0,
               available: number = 0,
               shortDescription: string = "",
-              selected: number = 0)
+              selected: number = 0,
+              stars:number = 0)
   {
     this.id = id;
     this.name = name;
@@ -45,6 +47,7 @@ export class Trip {
     this.available = available;
     this.selected = selected;
     this.shortDescription = shortDescription;
+    this.stars=stars;
   }
 
 }

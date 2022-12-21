@@ -1,0 +1,14 @@
+<div class="displayGrid">
+  <p>{{cartTrip.name}}</p>
+  <p>{{cartTrip.country}}</p>
+  <p>{{cartTrip.price}}</p>
+  <p>{{cartTrip.price * cartTrip.selected}} {{cartTrip.currency}}</p>
+  <div class="selectionButton">
+    <h3>-</h3>
+  </div>
+  <p>{{cartTrip.selected}}</p>
+  <div class="selectionButton">
+    <h3>+</h3>
+  </div>
+  <button class="btn btn-default" (click)="buyTrip()">Buy</button>
+</div>

@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CartPageComponent } from './cart-page.component';
+import {CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA} from "@angular/core";
+import {DisplaySelectedTripComponent} from "../../Molecules/display-selected-trip/display-selected-trip.component";
 
 describe('CartPageComponent', () => {
   let component: CartPageComponent;
@@ -8,7 +10,7 @@ describe('CartPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CartPageComponent ]
+      declarations: [ CartPageComponent ],
     })
     .compileComponents();
 

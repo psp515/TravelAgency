@@ -14,6 +14,10 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatStepperModule} from "@angular/material/stepper";
 import { CartPageComponent } from './templates/cart-page/cart-page.component';
 import { TripPageComponent } from './templates/trip-page/trip-page.component';
+import { TripGradeComponent } from './components/trip-grade/trip-grade.component';
+import { TripReviewComponent } from './components/trip-review/trip-review.component';
+import { DisplayreviewComponent } from './Molecules/displayreview/displayreview.component';
+import { DisplaySelectedTripComponent } from './Molecules/display-selected-trip/display-selected-trip.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,11 @@ import { TripPageComponent } from './templates/trip-page/trip-page.component';
     CartComponent,
     AddtripComponent,
     CartPageComponent,
-    TripPageComponent
+    TripPageComponent,
+    TripGradeComponent,
+    TripReviewComponent,
+    DisplayreviewComponent,
+    DisplaySelectedTripComponent
   ],
   imports: [
     BrowserModule,

@@ -1,1 +1,16 @@
-<p>trip-page works!</p>
+<div class="container">
+  <div class="trip-data">
+    TODO LAB 5
+  </div>
+
+  <app-trip-review class="add-review "
+                   [trip]="trip"
+                   (refreshReviews)="refreshReviews($event)"> </app-trip-review>
+
+
+  <h1>Reviews </h1>
+  <div class="reviews" *ngFor="let review of reviews">
+    <app-displayreview [review]="review"></app-displayreview>
+  </div>
+
+</div>

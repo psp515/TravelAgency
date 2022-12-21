@@ -1,0 +1,30 @@
+
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+}
+
+.trip-data{
+  width: 80vw;
+  min-width: 600px;
+  min-height: 450px;
+  margin-top: 30px;
+  height: 50vh;
+  background-color: whitesmoke;
+  border-radius: 30px;
+  padding: 20px;
+  transition: 0.4s ease-in-out;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.reviews{
+  width: 80vw;
+  min-width: 600px;
+  margin-top: 30px;
+  margin-bottom: 80px;
+  height: auto;
+  border-radius: 30px;
+  transition: 0.4s ease-in-out;
+}

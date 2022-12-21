@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
+import { Router } from '@angular/router';
 import {Trip} from "../../models/trip";
 import {TripService} from "../../services/TripService";
 
@@ -10,8 +11,9 @@ import {TripService} from "../../services/TripService";
 export class TripComponent {
 
   @Input() trip: Trip
+  @Input() disableButtons: boolean = false;
 
-  constructor(private tripService: TripService) {
+  constructor(private tripService: TripService, private router: Router) {
     this.trip = new Trip();
   }
 
@@ -21,6 +23,9 @@ export class TripComponent {
   callParent = () => this.refreshSelected.emit('refreshSelected');
 
   plusClicked(){
+    if (this.disableButtons)
+      return;
+
     if(this.trip.selected == this.trip.available)
     {
       alert("Maksymalna liczba miejsc.");
@@ -33,6 +38,9 @@ export class TripComponent {
 
   minusClicked(){
 
+    if (this.disableButtons)
+      return;
+
     if(this.trip.selected == 0)
     {
       alert("Minimalna liczba miejsc.");
@@ -44,9 +52,19 @@ export class TripComponent {
   }
 
   deleteTrip(){
+    if (this.disableButtons)
+      return;
+
     this.tripService.deleteItem(this.trip.id);
     this.refreshTrips.emit('refreshTrips');
     this.callParent();
+  }
+
+  goToTrip() {
+    if (this.disableButtons)
+      return;
+
+    this.router.navigate(['/trip/'+this.trip.id, ]);
   }
 
   colorfiller = () => {
@@ -75,7 +93,7 @@ export class TripComponent {
     if (this.trip.theMostExpensiveTrip)
       return '9px solid #83C760';
 
-    return 'none';
+    return '0px solid transparent';
   }
 
   backgroundColorFiller = () => {

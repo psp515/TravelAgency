@@ -1,0 +1,26 @@
+<div class="review-container">
+  <div class="form">
+    <h1>New Review</h1>
+    <form (ngSubmit)="addReview()" #tripForm="ngForm">
+      <div class="form-group">
+
+        <label for="shortReview">Short Review</label>
+        <textarea type="text"
+                  class="form-control"
+                  maxlength="100"
+                  id="shortReview"
+                  required
+                  [ngModel] ="review.review"
+                  name="shortReview"
+                  #shortReview="ngModel"></textarea>
+      </div>
+
+      <label for="grade">Grade</label>
+      <app-trip-grade id="grade" [grade]="review.grade"> </app-trip-grade>
+
+      <button type="submit"
+              class="btn btn-success"
+              [disabled]="!tripForm.form.valid">Add Review</button>
+    </form>
+  </div>
+</div>

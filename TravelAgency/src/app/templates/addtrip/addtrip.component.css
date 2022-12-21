@@ -6,3 +6,36 @@
   border-radius: 15px;
 }
 
+.container{
+  display: grid;
+  grid-template-areas: "f t";
+  grid-template-columns: 60% 40%;
+  justify-items: center;
+  align-items: center;
+}
+
+.form{
+  grid-area: f;
+  width: 100%;
+}
+
+
+.trip{
+  grid-area: t;
+  display: flex;
+  margin-left: 90px;
+}
+
+
+@media (max-width: 1000px) {
+  .container{
+    grid-template-areas: "f";
+    grid-template-columns: 100%;
+  }
+
+  .trip
+  {
+    display: none;
+  }
+
+}

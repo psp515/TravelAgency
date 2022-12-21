@@ -1,0 +1,43 @@
+.displayGrid{
+  display: grid;
+  width: 64vw;
+  grid-area: d;
+  padding: 10px;
+  grid-template-columns: 15% 15% 15% 15% 10% 10% 10% 10%;
+  background-color: whitesmoke;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 15px;
+  align-items: center;
+  justify-items: center;
+  margin-bottom: 10px;
+}
+
+.selectionButton{
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  margin: 0;
+  border-radius: 50%;
+  background-color: #E5BDF6;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.4s ease-in-out;
+}
+
+.selectionButton:hover{
+  scale: 1.2;
+}
+
+h3{
+  padding: 0;
+  margin: 0;
+}
+
+@media (max-width: 1000px) {
+  .displayGrid{
+    width: 90vw;
+  }
+
+}

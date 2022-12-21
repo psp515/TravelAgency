@@ -20,7 +20,7 @@ export class AddtripComponent {
   {
     this.model.id = (new Date).getTime()
     this.model.likes = 0
-
+    this.model.image = "assets/data/images/Rome3.jpeg";
     this.tripService.addItem(this.model)
     alert('Dodano wycieczkę do' + this.model.country)
     this.refreshData()
@@ -33,7 +33,6 @@ export class AddtripComponent {
     this.model.available = 1;
   }
 
-  //could be request do db representing where trips could be
 
   countries = ['Poland',
     'Italy',

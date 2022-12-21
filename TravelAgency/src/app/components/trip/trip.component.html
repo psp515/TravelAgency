@@ -15,11 +15,11 @@
 
         <div class="card-description-item"> {{trip.country | uppercase}} </div>
         <div class="card-description-line"> </div>
-        <div class="card-description-item"> Początek: {{trip.tripStart}} </div>
+        <div class="card-description-item"> Start: {{trip.tripStart}} </div>
         <div class="card-description-line"> </div>
-        <div class="card-description-item"> Koniec: {{trip.tripEnd}}</div>
+        <div class="card-description-item"> End: {{trip.tripEnd}}</div>
         <div class="card-description-line"> </div>
-        <div class="card-description-item"> Liczba dostępnych miejsc: {{trip.available}}</div>
+        <div class="card-description-item"> Avaliable trips: {{trip.available}}</div>
         <div class="card-description-line"> </div>
         <div class="card-description-item"> {{trip.shortDescription}}</div>
       </section>
@@ -55,15 +55,16 @@
 
 
       <div class="card-back-description">
-        Cena wycieczki (1 osoba)
+        Price (1 person)
       </div>
 
       <div class="card-back-price">
         {{trip.price}} {{trip.currency}}
       </div>
 
-      <a class="card-back-button" href="#">
-        Więcej Informacji!
+      <a class="card-back-button"
+      (click)="goToTrip()">
+        Learn More!
       </a>
 
     </div>
