@@ -1,0 +1,85 @@
+<div class="filterbg">
+  <form  #tripForm="ngForm" (ngSubmit)="filterItems()">
+  <p class="description">Price ($)</p>
+
+  <div class="range">
+    <input class="rangeinput"
+           [(ngModel)]="this.tripService.filters.LowPrice"
+           name="lowprice"
+           #lowprice="ngModel"
+           type="number">
+    <p class="description"> - </p>
+    <input class="rangeinput"
+           [(ngModel)]="this.tripService.filters.TopPrice"
+           name="topPrice"
+           type="number"
+           #topPrice="ngModel">
+  </div>
+
+    <div [hidden]="!(topPrice < lowprice)"
+         class="alert alert-danger">
+      Select valid price.
+    </div>
+
+  <p class="description">Start Date</p>
+
+  <input class="dateinput"
+         [(ngModel)]="this.tripService.filters.StartDate"
+         name="startDate"
+         type="date"
+         #startDate="ngModel">
+
+  <p class="description">End Date</p>
+
+  <input class="dateinput"
+         [(ngModel)]="this.tripService.filters.EndDate"
+         name="endDate"
+         type="date"
+         #endDate="ngModel">
+    <div [hidden]="!(startDate < endDate)"
+         class="alert alert-danger">
+          Select valid finish date
+    </div>
+
+  <p class="description">Rating</p>
+
+  <div class="range">
+    <input class="rangeinput"
+           [(ngModel)]="this.tripService.filters.minGrade"
+           name="mingrade"
+           min="1"
+           max="5"
+           type="number"
+           #mingrade="ngModel">
+
+    <p class="description"> - </p>
+
+    <input class="rangeinput"
+           [(ngModel)]="this.tripService.filters.maxGrade"
+           name="maxgrade"
+           min="1"
+           max="5"
+           type="number"
+           #maxgrade="ngModel">
+  </div>
+
+    <div [hidden]="!(mingrade < maxgrade)"
+         class="alert alert-danger">
+      Select valid finish date
+    </div>
+
+  <p class="description"> Avaliable Places </p>
+  <div *ngFor="let item of tripService.filters.places" >
+    <div class="filtrationunit">
+      <input type="checkbox"
+             [(ngModel)]="item.selected"
+             [ngModelOptions]="{standalone: true}">
+      <p class="filtrationunit-text">  {{item.name}} </p>
+    </div>
+  </div>
+    <button type="submit"
+            class="btn btn-success btn_margin"
+            [disabled]="!tripForm.form.valid" >Filter</button>
+   <button class="btn btn-default btn_margin"  (click)="clearFilters()">Clear Filters</button>
+  </form>
+</div>

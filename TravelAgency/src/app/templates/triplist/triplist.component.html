@@ -1,12 +1,18 @@
 
-<div class="list">
-  <div *ngFor="let trip of trips">
+<div class="mainTripGrid">
 
-    <app-trip [trip]="trip"
-              (refreshSelected)="refreshSelectedTrips($event)"
-              (refreshTrips)="refreshTrips($event)">
+  <app-trips-filter class="filter"> </app-trips-filter>
 
-    </app-trip>
+  <div class="tripList">
+
+    <div *ngFor="let trip of tripService.filteredTrips">
+
+      <app-trip [trip]="trip"
+                (refreshSelected)="refreshSelectedTrips($event)"
+                (refreshTrips)="refreshTrips($event)">
+
+      </app-trip>
+    </div>
   </div>
 
   <app-cart class="cart" [selectedTrips]="this.selectedTrips">

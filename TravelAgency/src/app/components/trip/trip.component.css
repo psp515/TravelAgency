@@ -5,7 +5,7 @@
   max-height: 800px;
   max-width: 400px;
   min-width: 300px;
-  width: 27vw;
+  width: 20vw;
   perspective: 1500px;
   margin-left: 2vw;
   margin-right: 2vw;
@@ -191,9 +191,9 @@
   border-radius: 14px;
   padding: 5px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  height: 50px;
-  margin-left: 30px;
-  margin-right: 30px;
+  height: 34px;
+  margin-left: 50px;
+  margin-right: 50px;
   align-self: center;
   justify-self: center;
   justify-content: center;
@@ -206,8 +206,8 @@
 .left-button
 {
   position: absolute;
-  left: 3vw;
-  width: 50px;
+  left: 2vw;
+  width: 34px;
   border-radius: 50%;
 }
 
@@ -215,8 +215,8 @@
 {
 
   position: absolute;
-  right: 3vw;
-  width: 50px;
+  right: 2vw;
+  width: 34px;
   border-radius: 50%;
 }
 
@@ -240,8 +240,8 @@
   align-content: center;
   justify-content: center;
   border-radius: 14px;
-  min-width: 50px;
-  width: 3vw;
+  min-width: 60px;
+  width: auto;
   height: 40px;
   display: flex;
   transition: 0.4s ease-in-out;

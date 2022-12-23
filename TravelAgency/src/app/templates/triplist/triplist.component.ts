@@ -13,12 +13,13 @@ export class TriplistComponent implements OnInit {
 
   selectedTrips: number = 0;
 
-  constructor(private  tripService: TripService) {
+  constructor(public  tripService: TripService) {
     this.tripService = tripService
   }
 
   ngOnInit(){
     this.trips = this.tripService.getItems()
+    this.refreshSelectedTrips("start");
   }
 
   refreshSelectedTrips($event: string){

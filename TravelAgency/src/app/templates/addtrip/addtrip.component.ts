@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {TripService} from "../../services/TripService";
 import {Trip} from "../../models/trip";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-addtrip',
@@ -11,7 +12,7 @@ export class AddtripComponent {
 
   model = new Trip();
 
-  constructor(private tripService: TripService)
+  constructor(private tripService: TripService, private router: Router)
   {
     this.refreshData();
   }
@@ -24,6 +25,9 @@ export class AddtripComponent {
     this.tripService.addItem(this.model)
     alert('Dodano wycieczkę do' + this.model.country)
     this.refreshData()
+
+
+    this.router.navigate(['/trips']);
   }
 
   refreshData()
@@ -32,23 +36,6 @@ export class AddtripComponent {
     this.model.likes = 0
     this.model.available = 1;
   }
-
-
-  countries = ['Poland',
-    'Italy',
-    'Spain',
-    'France',
-    'England',
-    'Portugal',
-    'Maroko',
-    'Qatar',
-    'Saudi Arabia',
-    'Egypt',
-    'Greece',
-    'Croatria',
-    'Austira',
-    'Germany',
-    'Norway'];
 
   currencies = ['$',
     'PLN',

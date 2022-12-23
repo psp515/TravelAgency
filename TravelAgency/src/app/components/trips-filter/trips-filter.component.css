@@ -1,0 +1,83 @@
+.filterbg{
+  height: auto;
+  width: 21vw;
+  max-width: 400px;
+  min-width: 240px;
+  min-height: 200px;
+  background-color: #F5F7FA;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  justify-items: center;
+}
+
+.rangeinput{
+  margin-left: 10px;
+  margin-right: 10px;
+  min-width: 80px;
+  width: 6.5vw;
+  max-width: 150px;
+  height: 26px;
+}
+
+.range{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-items: center;
+  align-items: center;
+  align-self: center;
+}
+
+.description{
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.dateinput{
+  width: 10vw;
+}
+
+.btn_margin
+{
+  margin-top: 10px;
+}
+
+.filtrationunit
+{
+  display: flex;
+  flex-direction: row;
+  padding-left: 10px;
+}
+
+.filtrationunit-text{
+  align-self: center;
+  margin-left: 10px;
+  text-align: center;
+  margin-top: 7px;
+
+}
+
+
+@media (max-width: 1000px) {
+  .filterbg
+  {
+    display: grid;
+    width: 80vw;
+    max-width: none;
+  }
+
+  .rangeinput{
+    width: 30vw;
+  }
+
+  .dateinput{
+    width: 60vw;
+  }
+
+}

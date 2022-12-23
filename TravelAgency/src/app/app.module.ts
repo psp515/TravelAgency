@@ -18,6 +18,7 @@ import { TripGradeComponent } from './components/trip-grade/trip-grade.component
 import { TripReviewComponent } from './components/trip-review/trip-review.component';
 import { DisplayreviewComponent } from './Molecules/displayreview/displayreview.component';
 import { DisplaySelectedTripComponent } from './Molecules/display-selected-trip/display-selected-trip.component';
+import { TripsFilterComponent } from './components/trips-filter/trips-filter.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { DisplaySelectedTripComponent } from './Molecules/display-selected-trip/
     TripGradeComponent,
     TripReviewComponent,
     DisplayreviewComponent,
-    DisplaySelectedTripComponent
+    DisplaySelectedTripComponent,
+    TripsFilterComponent
   ],
   imports: [
     BrowserModule,

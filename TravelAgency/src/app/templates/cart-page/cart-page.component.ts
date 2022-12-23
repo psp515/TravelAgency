@@ -21,7 +21,7 @@ export class CartPageComponent implements OnInit{
   ngOnInit(): void
   {
     this.selectedTrips = []
-    this.selectedTrips = this.tripService.getItems().filter(x=>x.selected>0).map(x=> new CartTrip(x));
+    this.selectedTrips = this.tripService.getAllItems().filter(x=>x.selected>0).map(x=> new CartTrip(x));
 
     this.totalTrips = this.selectedTrips.reduce((accumulator, trip) => {return accumulator + trip.selected;}, 0);
     let converter = new CurrencyConverter();

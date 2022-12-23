@@ -32,7 +32,7 @@ export class Trip {
               available: number = 0,
               shortDescription: string = "",
               selected: number = 0,
-              stars:number = 0)
+              stars:number = 3)
   {
     this.id = id;
     this.name = name;
