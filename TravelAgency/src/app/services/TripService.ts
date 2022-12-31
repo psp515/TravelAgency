@@ -5,6 +5,7 @@ import {HttpTripsService} from "./HttpTripsService";
 import {CurrencyConverter} from "../tools/CurrencyConverter";
 import {FilterOptions} from "../models/filterModel"
 import {CheckedPlace} from "../models/checkedPlace";
+import {UserBarModel} from "../models/userBarModel";
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,12 @@ export class TripService
 
   lastFilter : number = 0;
 
+  public userBarData: UserBarModel
+
   constructor(tripsService: HttpTripsService) {
+
+    this.userBarData = new UserBarModel(0,0,"","","")
+
     // TODO : load data from firebase
     fetch("./assets/data/trips.json")
       .then(res => res.json())
@@ -65,8 +71,6 @@ export class TripService
   {
     this.filteredTrips = []
     this.filteredTrips = this.trips.filter(a => this.tripRequirements(a))
-
-
 
     this.refreshFilters();
 
@@ -185,6 +189,17 @@ export class TripService
 
     if(extreme != null)
       extreme.theMostExpensiveTrip = true
+  }
+
+  updateBarData()
+  {
+     this.userBarData.selectedTrips = this.trips.reduce((accumulator, trip) => {return accumulator + trip.selected;}, 0);
+     let converter = new CurrencyConverter();
+     this.userBarData.tripsTotalCost = Math.round(
+       100*this.trips.reduce((accumulator, trip) =>
+       {
+         return accumulator +  trip.selected * converter.convertMoneyToPlN(trip.price, trip.currency);
+         }, 0))/100
   }
 
 }

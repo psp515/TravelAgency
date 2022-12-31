@@ -19,6 +19,9 @@ import { TripReviewComponent } from './components/trip-review/trip-review.compon
 import { DisplayreviewComponent } from './Molecules/displayreview/displayreview.component';
 import { DisplaySelectedTripComponent } from './Molecules/display-selected-trip/display-selected-trip.component';
 import { TripsFilterComponent } from './components/trips-filter/trips-filter.component';
+import { MainPageComponent } from './templates/main-page/main-page.component';
+import { TripHistComponent } from './templates/trip-hist/trip-hist.component';
+import { UserHeaderComponent } from './components/user-header/user-header.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,10 @@ import { TripsFilterComponent } from './components/trips-filter/trips-filter.com
     TripReviewComponent,
     DisplayreviewComponent,
     DisplaySelectedTripComponent,
-    TripsFilterComponent
+    TripsFilterComponent,
+    MainPageComponent,
+    TripHistComponent,
+    UserHeaderComponent
   ],
   imports: [
     BrowserModule,

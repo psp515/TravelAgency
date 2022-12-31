@@ -1,0 +1,22 @@
+.user-nav{
+  height: 30px;
+  width: 100vw;
+  background-color: #B8C6DB;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.nav-item
+{
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+p
+{
+  font-size: 14px;
+  padding: 0;
+  margin-top: 6px;
+}

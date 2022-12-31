@@ -1,12 +1,25 @@
 <header>
-  <div>
-    Trips
-    <a [routerLink] = "'/trips'">Trips</a>
+
+  <div class="branding">
+    <b>BRAND</b>NAME
   </div>
 
-  <div>
-     | Add Trips
-    <a [routerLink] = "'/addtrip'">Add Trip</a>
-  </div>
+  <nav>
+    <div class="nav-element">
+      <a class="nav-description" routerLink="">Home</a>
+    </div>
 
+    <div class="nav-element">
+      <a class="nav-description" routerLink="trips">Trips</a>
+    </div>
+
+    <div class="nav-element">
+      <a class="nav-description" routerLink="addtrip">Add Trip</a>
+    </div>
+
+    <div class="nav-element">
+      <a class="nav-description" routerLink="hist">Trip Hist</a>
+    </div>
+
+  </nav>
 </header>

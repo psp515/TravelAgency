@@ -23,7 +23,8 @@ export class TriplistComponent implements OnInit {
   }
 
   refreshSelectedTrips($event: string){
-    this.selectedTrips = this.trips.reduce((accumulator, trip) => {return accumulator + trip.selected;}, 0);
+    this.tripService.updateBarData();
+    this.selectedTrips = this.tripService.userBarData.selectedTrips;
     this.tripService.updateExtremes();
   }
 

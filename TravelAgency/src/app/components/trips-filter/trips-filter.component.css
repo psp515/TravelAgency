@@ -39,8 +39,13 @@
   margin-top: 10px;
 }
 
+.from{
+  display: flex;
+  flex-direction: column;
+}
+
 .dateinput{
-  width: 10vw;
+  justify-self: center;
 }
 
 .btn_margin
