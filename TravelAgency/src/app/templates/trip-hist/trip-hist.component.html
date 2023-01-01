@@ -1,1 +1,36 @@
-<p>trip-hist works!</p>
+<div class="wrapper">
+
+  <h2>Trip Hist</h2>
+
+  <div class="histTrip">
+    <form>
+      <label>Awaiting</label>
+      <input type="checkbox"
+             ngModel="{{finished}}"
+             (ngModelChange)="filterTrips()">
+      <label>Finished</label>
+      <input type="checkbox"
+             ngModel="{{finished}}"
+             (ngModelChange)="filterTrips()">
+      <label>In Progress</label>
+      <input type="checkbox"
+             ngModel="{{finished}}"
+      (ngModelChange)="filterTrips()">
+    </form>
+  </div>
+
+  <div class="tripList">
+
+    <div *ngFor="let trip of histTrips">
+
+      <div class="histTrip">
+        <p><b>Country:</b> {{trip.country}}</p>
+        <p><b>Date:</b> {{trip.tripStart}} - {{trip.tripEnd}}</p>
+        <p><b>Total pirce:</b> {{trip.getTotalPriceAsString()}}</p>
+        <p><b>State:</b> {{trip.state()}}</p>
+      </div>
+
+    </div>
+  </div>
+
+</div>

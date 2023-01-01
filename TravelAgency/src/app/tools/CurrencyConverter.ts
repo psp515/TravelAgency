@@ -1,6 +1,8 @@
+import {CurrencyService} from "../services/CurrencyService";
 
 
 export class CurrencyConverter {
+
   getCurrencyFactor(currency:string)
   {
     if (currency == '$')
