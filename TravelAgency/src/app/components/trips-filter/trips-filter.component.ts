@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {TripService} from "../../services/TripService";
+import {CurrencyService} from "../../services/CurrencyService";
 
 @Component({
   selector: 'app-trips-filter',
@@ -8,7 +9,7 @@ import {TripService} from "../../services/TripService";
 })
 export class TripsFilterComponent {
 
-  constructor(public tripService: TripService) {
+  constructor(public tripService: TripService, public currencyService: CurrencyService) {
   }
 
   filterItems() {

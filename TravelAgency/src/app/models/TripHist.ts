@@ -23,12 +23,6 @@ export class TripHist
     return "In Progress"
   }
 
-  public getTotalPriceAsString() : string
-  {
-    let service = ServiceLocator.injector.get(CurrencyService);
-    return `${service.convertToActualCurrency(this.price*this.boughtTrips, this.currency)} ${service.current}`
-  }
-
   constructor(public id: number = -1,
               public userId:number = 0,
               public tripId:number = 0,

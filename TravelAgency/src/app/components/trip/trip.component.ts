@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 import { Router } from '@angular/router';
 import {Trip} from "../../models/trip";
 import {TripService} from "../../services/TripService";
+import {CurrencyService} from "../../services/CurrencyService";
 
 @Component({
   selector: 'app-trip',
@@ -13,7 +14,7 @@ export class TripComponent {
   @Input() trip: Trip
   @Input() disableButtons: boolean = false;
 
-  constructor(private tripService: TripService, private router: Router) {
+  constructor(public tripService: TripService, private router: Router, public currencyService: CurrencyService) {
     this.trip = new Trip();
   }
 

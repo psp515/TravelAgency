@@ -1,6 +1,6 @@
 <div class="filterbg">
   <form class="from" #tripForm="ngForm" (ngSubmit)="filterItems()">
-  <p class="description">Price ($)</p>
+  <p class="description">Price ({{currencyService.current}})</p>
 
   <div class="range">
     <input class="rangeinput"

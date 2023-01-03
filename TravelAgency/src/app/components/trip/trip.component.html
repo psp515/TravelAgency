@@ -59,7 +59,7 @@
       </div>
 
       <div class="card-back-price">
-        {{trip.price}} {{trip.currency}}
+        {{tripService.calculateTrip(trip)}} {{currencyService.current}}
       </div>
 
       <a class="card-back-button"

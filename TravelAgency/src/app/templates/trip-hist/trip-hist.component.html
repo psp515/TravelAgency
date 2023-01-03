@@ -26,7 +26,7 @@
       <div class="histTrip">
         <p><b>Country:</b> {{trip.country}}</p>
         <p><b>Date:</b> {{trip.tripStart}} - {{trip.tripEnd}}</p>
-        <p><b>Total pirce:</b> {{trip.getTotalPriceAsString()}}</p>
+        <p><b>Total pirce:</b> {{tripHistService.getTotalPrice(trip)}} {{currencyService.current}}</p>
         <p><b>State:</b> {{trip.state()}}</p>
       </div>
 

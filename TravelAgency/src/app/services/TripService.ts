@@ -6,6 +6,7 @@ import {CurrencyConverter} from "../tools/CurrencyConverter";
 import {FilterOptions} from "../models/filterModel"
 import {CheckedPlace} from "../models/checkedPlace";
 import {UserBarModel} from "../models/userBarModel";
+import {CurrencyService} from "./CurrencyService";
 
 @Injectable({
   providedIn: 'root'
@@ -18,11 +19,9 @@ export class TripService
 
   public filters: FilterOptions;
 
-  lastFilter : number = 0;
-
   public userBarData: UserBarModel
 
-  constructor(tripsService: HttpTripsService) {
+  constructor(tripsService: HttpTripsService, private currencyService : CurrencyService) {
 
     this.userBarData = new UserBarModel(0,0,"","","")
 
@@ -55,34 +54,20 @@ export class TripService
     this.filters = new FilterOptions();
   }
 
-  getAllItems(): Array<Trip> {
-    return this.trips;
-  }
+  //region FILTERS
 
-  getItems(): Array<Trip> {
-    return this.filteredTrips;
-  }
-
-  getItem(id:number){
-    return this.trips.find(trip => trip.id === id);
-  }
-
-  filterItems()
-  {
+  filterItems() {
     this.filteredTrips = []
+
     this.filteredTrips = this.trips.filter(a => this.tripRequirements(a))
 
     this.refreshFilters();
-
-    this.lastFilter = new Date().getTime();
   }
 
   tripRequirements(trip:Trip){
 
-    //TODO : ConvertPrices
-
-    if(!(trip.price >= this.filters.LowPrice &&
-      trip.price <= this.filters.TopPrice &&
+    if(!(this.calculateTrip(trip) >= this.filters.LowPrice &&
+      this.calculateTrip(trip)  <= this.filters.TopPrice &&
       trip.stars >= this.filters.minGrade &&
       trip.stars <= this.filters.maxGrade &&
       Date.parse(trip.tripStart) >= Date.parse(this.filters.StartDate) &&
@@ -101,10 +86,12 @@ export class TripService
     }
   }
 
-  refreshFilters()
-  {
-    this.filters.LowPrice = this.filteredTrips.reduce((a,b)=> a.price < b.price ? a : b).price
-    this.filters.TopPrice = this.filteredTrips.reduce((a,b)=> a.price > b.price ? a : b).price
+  refreshFilters() {
+    if(this.filteredTrips.length == 0)
+      return
+
+    this.filters.LowPrice = this.calculateTrip(this.filteredTrips.reduce((a,b)=> this.calculateTrip(a) < this.calculateTrip(b) ? a : b))
+    this.filters.TopPrice = this.calculateTrip(this.filteredTrips.reduce((a,b)=> this.calculateTrip(a) > this.calculateTrip(b)  ? a : b))
 
     this.filters.minGrade = this.filteredTrips.reduce((a,b)=> a.stars < b.stars ? a : b).stars
     this.filters.maxGrade = this.filteredTrips.reduce((a,b)=> a.stars > b.stars ? a : b).stars
@@ -130,23 +117,47 @@ export class TripService
       }
     }
 
-    console.log(this.filters)
+    this.updateExtremes()
   }
 
-  clearFilters()
-  {
+  clearFilters() {
     this.filteredTrips = []
 
-    for(let item in this.trips)
-      this.filteredTrips.push(this.trips[item])
+
+    for(let i in this.trips)
+      this.filteredTrips.push(this.trips[i])
 
     this.refreshFilters()
-
-    this.lastFilter = new Date().getTime();
   }
 
-  addItem(trip:Trip)
-  {
+  updateExtremes() {
+    this.trips.forEach( (trip) =>
+    {
+      trip.cheapestTrip = false;
+      trip.theMostExpensiveTrip = false;
+    });
+
+    if(this.filteredTrips.length < 2)
+      return;
+
+    let extreme : Trip = this.filteredTrips
+      .filter(a=> a.available != a.selected)
+      .reduce((a,b) => this.calculateTrip(a) < this.calculateTrip(b)  ? a:b)
+    extreme.cheapestTrip = true
+
+    let extreme2 = this.filteredTrips
+      .filter(a=> a.available != a.selected && !a.cheapestTrip )
+      .reduce((a,b) => this.calculateTrip(a) > this.calculateTrip(b)  ? a:b)
+
+    if(extreme2 != null)
+      extreme2.theMostExpensiveTrip = true
+  }
+
+  //endregion
+
+  //region CRUD
+
+  addItem(trip:Trip) {
     this.trips.push(trip)
     this.filteredTrips.push(trip)
 
@@ -164,35 +175,21 @@ export class TripService
     this.updateExtremes()
   }
 
-  updateExtremes() {
-    this.trips.forEach( (trip) =>
-    {
-      trip.cheapestTrip = false;
-      trip.theMostExpensiveTrip = false;
-    });
-
-    if(this.trips.length < 2)
-      return;
-
-    let converter = new CurrencyConverter();
-
-    let extreme : Trip = this.trips
-      .filter(a=> a.available != a.selected)
-      .reduce((a,b) =>
-        converter.convertMoneyToPlN(a.price,a.currency) < converter.convertMoneyToPlN(b.price, b.currency) ? a:b)
-    extreme.cheapestTrip = true
-
-    extreme = this.trips
-      .filter(a=> a.available != a.selected && !a.cheapestTrip )
-      .reduce((a,b) =>
-        converter.convertMoneyToPlN(a.price, a.currency) > converter.convertMoneyToPlN(b.price, b.currency) ? a:b)
-
-    if(extreme != null)
-      extreme.theMostExpensiveTrip = true
+  getAllItems(): Array<Trip> {
+    return this.trips;
   }
 
-  updateBarData()
-  {
+  getItems(): Array<Trip> {
+    return this.filteredTrips;
+  }
+
+  getItem(id:number){
+    return this.trips.find(trip => trip.id === id);
+  }
+
+  //endregion
+
+  updateBarData() {
      this.userBarData.selectedTrips = this.trips.reduce((accumulator, trip) => {return accumulator + trip.selected;}, 0);
      let converter = new CurrencyConverter();
      this.userBarData.tripsTotalCost = Math.round(
@@ -200,6 +197,13 @@ export class TripService
        {
          return accumulator +  trip.selected * converter.convertMoneyToPlN(trip.price, trip.currency);
          }, 0))/100
+  }
+
+  calculateTrip(trip : Trip)
+  {
+    if(trip == null)
+      return 0
+    return this.currencyService.convertToActualCurrency(trip.price, trip.currency)
   }
 
 }

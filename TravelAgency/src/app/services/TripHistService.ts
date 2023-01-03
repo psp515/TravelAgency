@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Trip} from "../models/trip";
 import {TripHist} from "../models/TripHist";
 import {CurrencyService} from "./CurrencyService";
+import {ServiceLocator} from "../locator.sevice";
 
 
 @Injectable({
@@ -13,7 +14,7 @@ export class TripHistService
   trips : TripHist[] = [];
 
   //http: HttpClient
-  constructor() {
+  constructor(private currencyService:CurrencyService) {
 
 
   }
@@ -44,8 +45,16 @@ export class TripHistService
     return trips;
   }
 
-  addTrip(trip:Trip, id:number)
+  addTripToHist(trip:Trip, id:number)
   {
     //Adds to hist
+  }
+
+
+  //Helpers
+
+  public getTotalPrice(trip : TripHist) : number
+  {
+    return this.currencyService.convertToActualCurrency(trip.price*trip.boughtTrips, trip.currency)
   }
 }

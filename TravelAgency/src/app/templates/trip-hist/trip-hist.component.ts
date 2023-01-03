@@ -18,7 +18,8 @@ export class TripHistComponent implements OnInit {
   public finished : boolean = true;
   public inProgress : boolean = true;
 
-  constructor(private tripHistService: TripHistService, public currency: CurrencyService)
+  constructor(public tripHistService: TripHistService,
+              public currencyService: CurrencyService)
   {
   }
 
