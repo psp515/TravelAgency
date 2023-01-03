@@ -63,16 +63,16 @@
         </div>
       </div>
 
-      <h3>Other Informations</h3>
-
       <div class="form-group">
-        <label for="currency">CurrencyConverter</label>
+        <label for="currency">Currency </label>
         <select class="form-control"  id="currency"
                 required
                 [(ngModel)]="model.currency" name="currency">
           <option *ngFor="let c of currencies" [value]="c">{{c}}</option>
         </select>
       </div>
+
+      <h3>Other Informations</h3>
 
       <div class="form-group">
         <label for="tripStart">Trpis Starts</label>

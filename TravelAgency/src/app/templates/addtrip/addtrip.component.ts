@@ -21,7 +21,7 @@ export class AddtripComponent {
   {
     this.model.id = (new Date).getTime()
     this.model.likes = 0
-    this.model.image = "assets/data/images/Rome3.jpeg";
+    this.model.image = "https://via.placeholder.com/600/92c952";
     this.tripService.addItem(this.model)
     alert('Dodano wycieczkę do' + this.model.country)
     this.refreshData()
