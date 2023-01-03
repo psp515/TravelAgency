@@ -183,8 +183,13 @@ export class TripService
     return this.filteredTrips;
   }
 
-  getItem(id:number){
-    return this.trips.find(trip => trip.id === id);
+  getItem(id:number) : Trip{
+
+    for(let i = 0;i < this.trips.length;i++)
+      if (this.trips[i].id == id)
+        return this.trips[i]
+
+    return new Trip();
   }
 
   //endregion

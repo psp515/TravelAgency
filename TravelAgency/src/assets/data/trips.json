@@ -16,7 +16,10 @@
       "selected": "0",
       "cheapestTrip": false,
       "theMostExpensiveTrip": false,
-      "stars" : "3"
+      "stars" : "3",
+      "urls": ["https://via.placeholder.com/600/92c952",
+        "https://via.placeholder.com/600/92c952",
+        "https://via.placeholder.com/600/92c952"]
     },
     {
       "id":"1",
@@ -34,7 +37,10 @@
       "selected": "0",
       "cheapestTrip": false,
       "theMostExpensiveTrip": false,
-      "stars" : "5"
+      "stars" : "5",
+      "urls": ["https://via.placeholder.com/600/92c952",
+        "https://via.placeholder.com/600/92c952",
+        "https://via.placeholder.com/600/92c952"]
     },
     {
       "id":"2",
@@ -52,7 +58,10 @@
       "selected": "0",
       "cheapestTrip": false,
       "theMostExpensiveTrip": false,
-      "stars" : "4"
+      "stars" : "4",
+      "urls": ["https://via.placeholder.com/600/92c952",
+        "https://via.placeholder.com/600/92c952",
+        "https://via.placeholder.com/600/92c952"]
     },
     {
       "id":"3",
@@ -70,7 +79,10 @@
       "selected": "0",
       "cheapestTrip": false,
       "theMostExpensiveTrip": false,
-      "stars" : "2"
+      "stars" : "2",
+      "urls": ["https://via.placeholder.com/600/92c952",
+        "https://via.placeholder.com/600/92c952",
+        "https://via.placeholder.com/600/92c952"]
     },
     {
       "id":"4",
@@ -88,7 +100,10 @@
       "selected": "0",
       "cheapestTrip": false,
       "theMostExpensiveTrip": false,
-      "stars" : "3"
+      "stars" : "3",
+      "urls": ["https://via.placeholder.com/600/92c952",
+        "https://via.placeholder.com/600/92c952",
+        "https://via.placeholder.com/600/92c952"]
     },
     {
       "id":"5",
@@ -106,7 +121,10 @@
       "selected": "0",
       "cheapestTrip": false,
       "theMostExpensiveTrip": false,
-      "stars" : "4"
+      "stars" : "4",
+      "urls": ["https://via.placeholder.com/600/92c952",
+        "https://via.placeholder.com/600/92c952",
+        "https://via.placeholder.com/600/92c952"]
     },
     {
       "id":"6",
@@ -124,7 +142,10 @@
       "selected": "0",
       "cheapestTrip": false,
       "theMostExpensiveTrip": false,
-      "stars" : "5"
+      "stars" : "5",
+      "urls": ["https://via.placeholder.com/600/92c952",
+        "https://via.placeholder.com/600/92c952",
+        "https://via.placeholder.com/600/92c952"]
     },
     {
       "id":"7",
@@ -142,7 +163,10 @@
       "selected": "0",
       "cheapestTrip": false,
       "theMostExpensiveTrip": false,
-      "stars" : "5"
+      "stars" : "5",
+      "urls": ["https://via.placeholder.com/600/92c952",
+        "https://via.placeholder.com/600/92c952",
+        "https://via.placeholder.com/600/92c952"]
     },
     {
       "id":"8",
@@ -160,7 +184,10 @@
       "selected": "0",
       "cheapestTrip": false,
       "theMostExpensiveTrip": false,
-      "stars" : "3"
+      "stars" : "3",
+      "urls": ["https://via.placeholder.com/600/92c952",
+        "https://via.placeholder.com/600/92c952",
+        "https://via.placeholder.com/600/92c952"]
     },
     {
       "id":"9",
@@ -179,8 +206,8 @@
       "cheapestTrip": false,
       "theMostExpensiveTrip": false,
       "stars" : "5",
-      "urls": ["assets/data/images/Vienna.jpeg",
-               "assets/data/images/Rome1.jpeg",
-               "assets/data/images/Rome2.jpeg"]
+      "urls": ["https://via.placeholder.com/600/92c952",
+               "https://via.placeholder.com/600/92c952",
+               "https://via.placeholder.com/600/92c952"]
     }]
 }

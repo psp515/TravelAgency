@@ -27,12 +27,13 @@ export class HttpTripsService implements IRestService<Trip>
         for (let item in tmp)
         {
           let x = tmp[item] as Trip
+
+          console.log(x)
+
           x.selected = 0
           trips.push(x)
         }
       });
-
-    console.log(trips)
     return trips;
   }
 
