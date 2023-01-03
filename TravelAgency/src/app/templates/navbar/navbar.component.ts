@@ -7,4 +7,15 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
 
+  hamburger :boolean = false;
+
+  hamburgerClicked()
+  {
+    this.hamburger = !this.hamburger;
+  }
+
+  optionChosen(){
+    this.hamburger = false;
+  }
+
 }

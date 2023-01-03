@@ -1,25 +1,43 @@
-<header>
+<header class="header">
 
-  <div class="branding">
-    <b>BRAND</b>NAME
+  <div class="logo">
+    <h3 class="logoh3"><b>TRIP</b>IT</h3>
   </div>
 
-  <nav>
-    <div class="nav-element">
-      <a class="nav-description" routerLink="">Home</a>
+  <nav class="navbar">
+
+    <div class="desktop-nav">
+      <ul class="desktop-list">
+        <li class="desktop-item"> <a class="reference" routerLink=""> HOME </a> </li>
+        <li class="desktop-item"> <a class="reference" routerLink="trips"> TRIPS </a> </li>
+        <li class="desktop-item"> <a class="reference" routerLink="addtrip"> NEW TRIP </a> </li>
+        <li class="desktop-item"> <a class="reference" routerLink="hist"> TRIP HISTORY </a> </li>
+      </ul>
     </div>
 
-    <div class="nav-element">
-      <a class="nav-description" routerLink="trips">Trips</a>
-    </div>
+    <div class="mobile-nav">
+      <input class="checkbox" type="checkbox" id="switch" (click)="hamburgerClicked()" [ngModel]="hamburger">
 
-    <div class="nav-element">
-      <a class="nav-description" routerLink="addtrip">Add Trip</a>
-    </div>
+      <span class="hamburger-span"></span>
+      <span class="hamburger-span"></span>
+      <span class="hamburger-span"></span>
 
-    <div class="nav-element">
-      <a class="nav-description" routerLink="hist">Trip Hist</a>
-    </div>
+      <div class="menu">
 
+        <div class="menuitem" (click)="optionChosen()">
+          <a class="reference" routerLink="" > Home </a>
+        </div>
+        <div class="menuitem" (click)="optionChosen()">
+          <a class="reference" routerLink="trips"> Trips </a>
+        </div>
+        <div class="menuitem" (click)="optionChosen()">
+          <a class="reference" routerLink="addtrip"> New Trip </a>
+        </div>
+        <div class="menuitem" (click)="optionChosen()">
+          <a class="reference" routerLink="hist"> Trips History </a>
+        </div>
+      </div>
+
+    </div>
   </nav>
 </header>
