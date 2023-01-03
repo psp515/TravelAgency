@@ -20,7 +20,8 @@ export class Trip {
               public available: number = 0,
               public shortDescription: string = "",
               public selected: number = 0,
-              public stars:number = 3)
+              public stars:number = 3,
+              public urls:string[]=[])
   {
   }
 

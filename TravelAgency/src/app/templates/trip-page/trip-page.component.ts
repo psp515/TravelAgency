@@ -5,6 +5,7 @@ import {Subscription} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
 import {ReviewService} from "../../services/ReviewService";
 import {Review} from "../../models/Review";
+import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-trip-page',

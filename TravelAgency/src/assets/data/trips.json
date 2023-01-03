@@ -178,6 +178,9 @@
       "selected": "0",
       "cheapestTrip": false,
       "theMostExpensiveTrip": false,
-      "stars" : "5"
+      "stars" : "5",
+      "urls": ["assets/data/images/Vienna.jpeg",
+               "assets/data/images/Rome1.jpeg",
+               "assets/data/images/Rome2.jpeg"]
     }]
 }
