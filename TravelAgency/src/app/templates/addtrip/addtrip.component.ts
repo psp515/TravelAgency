@@ -15,6 +15,7 @@ export class AddtripComponent {
   constructor(private tripService: TripService, private router: Router)
   {
     this.refreshData();
+    this.model.image = "https://via.placeholder.com/600/92c952";
   }
 
   onSubmit()
@@ -23,10 +24,7 @@ export class AddtripComponent {
     this.model.likes = 0
     this.model.image = "https://via.placeholder.com/600/92c952";
     this.tripService.addItem(this.model)
-    alert('Dodano wycieczkę do' + this.model.country)
     this.refreshData()
-
-
     this.router.navigate(['/trips']);
   }
 
