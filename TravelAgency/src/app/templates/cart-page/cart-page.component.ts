@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {TripService} from "../../services/TripService";
 import {CurrencyService} from "../../services/CurrencyService";
 import {Trip} from "../../models/trip";
+import {TripHistService} from "../../services/TripHistService";
 
 @Component({
   selector: 'app-cart-page',
@@ -15,7 +16,7 @@ export class CartPageComponent implements OnInit{
   totalCost: number = 0;
   totalTrips: number = 0
 
-  constructor(private tripService : TripService, public currencyService: CurrencyService) {
+  constructor(private tripService : TripService, public currencyService: CurrencyService, private histService : TripHistService) {
   }
 
   ngOnInit(): void
@@ -36,8 +37,29 @@ export class CartPageComponent implements OnInit{
   }
 
   buyAllTrips(){
+    let errors = "";
+    for(let i in this.selectedTrips)
+    {
+      let trip = this.selectedTrips[i]
 
+      let response = this.histService.addTripToHist(trip);
 
+      if(response.IsSuccesfull)
+      {
+        this.tripService.tripBought(trip.id,trip.selected)
+        this.removeTripFromList(trip.id)
+      }
+      else
+        errors += response.ErrorMessage;
+    }
+
+    if(errors == "")
+      return
+
+    alert(errors)
   }
 
+  removeTripFromList(id: number) {
+    this.selectedTrips = this.selectedTrips.filter((x)=> x.id != id)
+  }
 }

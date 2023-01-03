@@ -4,6 +4,7 @@ import {Trip} from "../models/trip";
 import {TripHist} from "../models/TripHist";
 import {CurrencyService} from "./CurrencyService";
 import {ServiceLocator} from "../locator.sevice";
+import {Response} from "../models/response";
 
 
 @Injectable({
@@ -13,9 +14,8 @@ export class TripHistService
 {
   trips : TripHist[] = [];
 
-  //http: HttpClient
   constructor(private currencyService:CurrencyService) {
-    // id uzytkownia pobierane z serwisu uzytkownika
+
   }
 
   getUserHist() : TripHist[]
@@ -44,9 +44,10 @@ export class TripHistService
     return trips;
   }
 
-  addTripToHist(trip:Trip)
+  addTripToHist(trip:Trip) : Response
   {
     //Adds to hist
+    return new Response();
   }
 
   //Helpers

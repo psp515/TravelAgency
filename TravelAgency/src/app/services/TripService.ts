@@ -206,4 +206,13 @@ export class TripService
     return this.currencyService.convertToActualCurrency(trip.price, trip.currency)
   }
 
+  tripBought(id:number, bought: number) {
+    let trip = this.trips.filter((x)=>x.id == id)[0]
+
+    if(trip == null)
+      return;
+
+    trip.available -= bought;
+    trip.selected = 0;
+  }
 }

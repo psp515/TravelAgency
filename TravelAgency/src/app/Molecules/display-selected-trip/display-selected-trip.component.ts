@@ -1,9 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Trip} from "../../models/trip";
 import {TripService} from "../../services/TripService";
 import {TripHistService} from "../../services/TripHistService";
 import {CurrencyService} from "../../services/CurrencyService";
-import {single} from "rxjs";
 
 @Component({
   selector: 'app-display-selected-trip',
@@ -13,6 +12,8 @@ import {single} from "rxjs";
 export class DisplaySelectedTripComponent implements OnInit
 {
   @Input() trip: Trip = new Trip();
+
+  @Output() tripBought = new EventEmitter<number>();
 
   public total : number = 0;
   public single : number = 0
@@ -28,16 +29,16 @@ export class DisplaySelectedTripComponent implements OnInit
     this.total = this.single * this.trip.selected
   }
 
-  plusClicked(){
-    
-  }
-
-  minusClicked(){
-
-  }
-
   buyTrip(){
-
+    let response =  this.histService.addTripToHist(this.trip);
+    if(response.IsSuccesfull)
+    {
+      this.tripService.tripBought(this.trip.id, this.trip.selected)
+      this.tripBought.emit(this.trip.id)
+    }
+    else {
+      alert(response.ErrorMessage)
+    }
   }
 
 }

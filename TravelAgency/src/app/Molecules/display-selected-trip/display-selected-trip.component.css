@@ -3,7 +3,7 @@
   width: 64vw;
   grid-area: d;
   padding: 10px;
-  grid-template-columns: 15% 15% 30% 10% 10% 10% 10%;
+  grid-template-columns: 20% 20% 30% 10% 20%;
   background-color: whitesmoke;
   box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
   border-radius: 15px;
