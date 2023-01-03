@@ -10,5 +10,27 @@
       "price":"2949.99",
       "currency":"$",
       "boughtTrips": "0"
+    },
+    {
+      "id":"1",
+      "userId":"1",
+      "tripId":"1",
+      "country":"Italy",
+      "tripStart":"2022-10-10",
+      "tripEnd":"2022-10-15",
+      "price":"2949.99",
+      "currency":"$",
+      "boughtTrips": "0"
+    },
+    {
+      "id":"1",
+      "userId":"1",
+      "tripId":"1",
+      "country":"Italy",
+      "tripStart":"2022-10-10",
+      "tripEnd":"2023-10-15",
+      "price":"2949.99",
+      "currency":"$",
+      "boughtTrips": "0"
     }]
 }

@@ -15,11 +15,10 @@ export class TripHistService
 
   //http: HttpClient
   constructor(private currencyService:CurrencyService) {
-
-
+    // id uzytkownia pobierane z serwisu uzytkownika
   }
 
-  getUserHist(id:number) : TripHist[]
+  getUserHist() : TripHist[]
   {
     let trips : TripHist[] = []
 
@@ -45,11 +44,10 @@ export class TripHistService
     return trips;
   }
 
-  addTripToHist(trip:Trip, id:number)
+  addTripToHist(trip:Trip)
   {
     //Adds to hist
   }
-
 
   //Helpers
 

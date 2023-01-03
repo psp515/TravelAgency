@@ -3,13 +3,19 @@
   width: 64vw;
   grid-area: d;
   padding: 10px;
-  grid-template-columns: 15% 15% 15% 15% 10% 10% 10% 10%;
+  grid-template-columns: 15% 15% 30% 10% 10% 10% 10%;
   background-color: whitesmoke;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
   border-radius: 15px;
   align-items: center;
   justify-items: center;
   margin-bottom: 10px;
+
+}
+
+p{
+  margin: 0;
+  padding: 0;
 }
 
 .selectionButton{

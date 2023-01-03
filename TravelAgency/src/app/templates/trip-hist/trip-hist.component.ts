@@ -14,9 +14,9 @@ export class TripHistComponent implements OnInit {
 
   filteredHistTrips : TripHist[] = []
 
-  public awaiting : boolean = true;
-  public finished : boolean = true;
-  public inProgress : boolean = true;
+  awaiting = true;
+  finished = true;
+  inProgress = true;
 
   constructor(public tripHistService: TripHistService,
               public currencyService: CurrencyService)
@@ -24,18 +24,21 @@ export class TripHistComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.histTrips = this.tripHistService.getUserHist(0)
-    this.filteredHistTrips = this.tripHistService.getUserHist(0)
-
-    this.awaiting = true;
-    this.finished  = true;
-    this.inProgress = true;
+    this.histTrips = this.tripHistService.getUserHist()
+    this.filteredHistTrips = this.tripHistService.getUserHist()
   }
 
   filterTrips()
   {
-    this.filteredHistTrips = this.histTrips.filter((trip)=> (this.awaiting && trip.state() == "Awaiting")
-      || (this.finished && trip.state() == "Finished")
-      || (this.inProgress && trip.state() == "In Progress"))
+    this.filteredHistTrips = this.histTrips.filter((trip) => {
+
+      if (this.awaiting && trip.state() == 'Awaiting')
+        return true
+
+      if (this.finished && trip.state() == 'Finished')
+        return true
+
+      return this.inProgress && trip.state() == 'In Progress';
+    })
   }
 }

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {CartTrip} from "../../models/cartTrip";
 import {TripService} from "../../services/TripService";
-import {CurrencyConverter} from "../../tools/CurrencyConverter";
+import {CurrencyService} from "../../services/CurrencyService";
+import {Trip} from "../../models/trip";
 
 @Component({
   selector: 'app-cart-page',
@@ -10,22 +10,29 @@ import {CurrencyConverter} from "../../tools/CurrencyConverter";
 })
 export class CartPageComponent implements OnInit{
 
-  selectedTrips : CartTrip[] = [];
+  selectedTrips : Trip[] = [];
 
   totalCost: number = 0;
   totalTrips: number = 0
 
-  constructor(private tripService : TripService) {
+  constructor(private tripService : TripService, public currencyService: CurrencyService) {
   }
 
   ngOnInit(): void
   {
     this.selectedTrips = []
-    this.selectedTrips = this.tripService.getAllItems().filter(x=>x.selected>0).map(x=> new CartTrip(x));
+    this.selectedTrips = this.tripService.getAllItems().filter(x=>x.selected>0);
 
-    this.totalTrips = this.selectedTrips.reduce((accumulator, trip) => {return accumulator + trip.selected;}, 0);
-    let converter = new CurrencyConverter();
-    this.totalCost = Math.round(100*this.selectedTrips.reduce((accumulator, trip) => {return accumulator +  trip.selected * converter.convertMoneyToPlN(trip.price, trip.currency);}, 0))/100
+    this.totalTrips =
+      this.selectedTrips.reduce((accumulator, trip) => {
+        return accumulator + trip.selected;
+        }, 0);
+
+    this.totalCost =
+      Math.round(100*this.selectedTrips.reduce((accumulator, trip) =>
+      {
+        return accumulator + this.tripService.calculateTrip(trip);
+        }, 0))/100
   }
 
   buyAllTrips(){

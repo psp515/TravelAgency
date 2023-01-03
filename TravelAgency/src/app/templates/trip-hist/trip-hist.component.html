@@ -2,32 +2,39 @@
 
   <h2>Trip Hist</h2>
 
-  <div class="histTrip">
-    <form>
-      <label>Awaiting</label>
-      <input type="checkbox"
-             ngModel="{{finished}}"
-             (ngModelChange)="filterTrips()">
-      <label>Finished</label>
-      <input type="checkbox"
-             ngModel="{{finished}}"
-             (ngModelChange)="filterTrips()">
-      <label>In Progress</label>
-      <input type="checkbox"
-             ngModel="{{finished}}"
-      (ngModelChange)="filterTrips()">
+
+    <form  class="options" (submit)="filterTrips()" (change)="filterTrips()">
+        <div class="option">
+          <label>Awaiting</label>
+          <input type="checkbox"
+                 [checked]="awaiting"
+                 (change)="awaiting = !awaiting">
+        </div>
+        <div class="option">
+          <label>Finished</label>
+          <input type="checkbox"
+                 [checked]="finished"
+                 (change)="finished = !finished">
+        </div>
+        <div class="option">
+          <label>In Progress</label>
+          <input type="checkbox"
+                 [checked]="inProgress"
+                 (change)="inProgress = !inProgress">
+        </div>
     </form>
-  </div>
 
   <div class="tripList">
 
-    <div *ngFor="let trip of histTrips">
+    <div *ngFor="let trip of filteredHistTrips">
 
       <div class="histTrip">
-        <p><b>Country:</b> {{trip.country}}</p>
-        <p><b>Date:</b> {{trip.tripStart}} - {{trip.tripEnd}}</p>
-        <p><b>Total pirce:</b> {{tripHistService.getTotalPrice(trip)}} {{currencyService.current}}</p>
-        <p><b>State:</b> {{trip.state()}}</p>
+        <div class="histwrapper">
+          <p><b>Country:</b> {{trip.country}}</p>
+          <p><b>Total pirce:</b> {{tripHistService.getTotalPrice(trip)}} {{currencyService.current}}</p>
+          <p><b>State:</b> {{trip.state()}}</p>
+        </div>
+        <p class="datehist">{{trip.tripStart}} - {{trip.tripEnd}}</p>
       </div>
 
     </div>

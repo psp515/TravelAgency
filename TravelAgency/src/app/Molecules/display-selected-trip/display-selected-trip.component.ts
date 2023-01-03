@@ -1,22 +1,35 @@
-import {Component, Input} from '@angular/core';
-import {CartTrip} from "../../models/cartTrip";
+import {Component, Input, OnInit} from '@angular/core';
 import {Trip} from "../../models/trip";
+import {TripService} from "../../services/TripService";
+import {TripHistService} from "../../services/TripHistService";
+import {CurrencyService} from "../../services/CurrencyService";
+import {single} from "rxjs";
 
 @Component({
   selector: 'app-display-selected-trip',
   templateUrl: './display-selected-trip.component.html',
   styleUrls: ['./display-selected-trip.component.css']
 })
-export class DisplaySelectedTripComponent
+export class DisplaySelectedTripComponent implements OnInit
 {
-  @Input() cartTrip: CartTrip = new CartTrip(new Trip());
+  @Input() trip: Trip = new Trip();
 
-  constructor() {
+  public total : number = 0;
+  public single : number = 0
+
+  constructor(public tripService : TripService,
+              public histService : TripHistService,
+              public currencyService : CurrencyService) {
 
   }
 
-  plusClicked(){
+  ngOnInit(): void {
+    this.single= this.tripService.calculateTrip(this.trip)
+    this.total = this.single * this.trip.selected
+  }
 
+  plusClicked(){
+    
   }
 
   minusClicked(){

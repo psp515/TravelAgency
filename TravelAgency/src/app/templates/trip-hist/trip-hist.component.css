@@ -4,7 +4,6 @@
   flex-direction: column;
 }
 
-
 .histTrip{
   background-color: whitesmoke;
   padding: 20px;
@@ -12,24 +11,46 @@
   width: fit-content;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
   margin-bottom: 10px;
 }
+.tripList{
+  display: flex;
+  flex-direction: column;
+}
+.histwrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+
 
 input{
   margin-right: 20px;
   margin-left: 5px;
 }
-
 h2{
   margin-bottom: 20px;
   font-weight: 700;
 }
-
 p{
   padding: 0;
   margin: 0;
   margin-left: 10px;
-  text-align: center;
 }
+.datehist{
+  font-size: 1rem;
+}
+
+.options{
+  display: flex;
+  background-color: #B8C6DB;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
+  margin-bottom: 10px;
+  width: fit-content;
+}
+
+.option{}

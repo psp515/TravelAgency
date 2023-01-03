@@ -1,15 +1,15 @@
 <div class="container">
   <div class="informator">
-    <p class="description">Total Cost: {{totalCost}} PLN</p>
+    <p class="description">Total Cost: {{totalCost}} {{currencyService.current}}</p>
     <div class="cart-line"></div>
-    <p class="description">Total Trips: {{totalTrips}} PLN</p>
+    <p class="description">Total Trips: {{totalTrips}}</p>
     <div class="cart-line"></div>
     <button class="btn btn-default"> Buy All </button>
   </div>
 <div class="siplifier">
 
   <div class="selected-trips-list" *ngFor="let trip of selectedTrips">
-    <app-display-selected-trip [cartTrip]="trip"></app-display-selected-trip>
+    <app-display-selected-trip [trip]="trip"></app-display-selected-trip>
   </div>
 
 </div>
