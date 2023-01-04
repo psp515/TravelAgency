@@ -1,12 +1,17 @@
 import {Trip} from "../models/trip";
 import {Injectable} from "@angular/core";
 import {IRestService} from "../interfaces/IRestService";
+import {AngularFirestore} from "@angular/fire/compat/firestore";
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpTripsService implements IRestService<Trip>
 {
+  constructor(private db: AngularFirestore) {
+
+  }
+
   addItem(item: Trip): void {
   }
 
@@ -36,6 +41,8 @@ export class HttpTripsService implements IRestService<Trip>
       });
     return trips;
   }
+
+  
 
   updateItem(item: Trip): void {
   }

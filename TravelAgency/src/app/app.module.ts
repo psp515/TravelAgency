@@ -23,6 +23,10 @@ import { MainPageComponent } from './templates/main-page/main-page.component';
 import { TripHistComponent } from './templates/trip-hist/trip-hist.component';
 import { UserHeaderComponent } from './components/user-header/user-header.component';
 import { CarouselComponent } from './Molecules/carousel/carousel.component';
+import {AngularFireModule} from "@angular/fire/compat";
+import { firebaseConfig } from 'src/environment/environment';
+import {AngularFireDatabaseModule} from "@angular/fire/compat/database";
+import {AngularFireStorage, AngularFireStorageModule} from "@angular/fire/compat/storage";
 
 @NgModule({
   declarations: [
@@ -45,6 +49,9 @@ import { CarouselComponent } from './Molecules/carousel/carousel.component';
     CarouselComponent
   ],
   imports: [
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireStorageModule,
     BrowserModule,
     RouterLink,
     RouterOutlet,
