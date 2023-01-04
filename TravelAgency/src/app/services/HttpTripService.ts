@@ -1,5 +1,5 @@
-import {AngularFireDatabase} from "@angular/fire/compat/database";
-import {first, Observable} from "rxjs";
+import {AngularFireDatabase, AngularFireList} from "@angular/fire/compat/database";
+import {first, map, Observable} from "rxjs";
 import {Trip} from "../models/trip";
 import {Injectable} from "@angular/core";
 
@@ -8,11 +8,18 @@ import {Injectable} from "@angular/core";
 })
 export class HttpTripService{
 
-  trips: Observable<any[]>;
+  tripsRef: AngularFireList<any>;
+
+  trips: Observable<Trip[]>;
   private nextId: number | undefined;
 
+
   constructor(private db: AngularFireDatabase) {
-    this.trips = this.db.list('trips').valueChanges();
+    this.tripsRef = db.list('trips');
+    this.trips = this.tripsRef.snapshotChanges().pipe(
+      map(changes =>
+        changes.map(c => ({ key: c.payload.key, ...c.payload.val() })))
+    )
   }
 
   getItems()
@@ -22,22 +29,14 @@ export class HttpTripService{
 
   addItem(trip:Trip)
   {
-    const daneRef = this.db.list('trips');
-    daneRef.push({  id : trip.id,
-      name : trip.name,
-      country : trip.country,
-      tripStart : trip.tripStart,
-      tripEnd : trip.tripEnd,
-      price : trip.price,
-      description : trip.description,
-      image : trip.image,
-      currency : trip.currency,
-      likes : trip.likes,
-      available : trip.available,
-      shortDescription : trip.shortDescription,
-      selected : trip.selected,
-      stars : trip.stars,
-      urls:trip.urls});
+    try
+    {
+      this.tripsRef.push(trip);
+    }
+    catch (Exception)
+    {
+      console.log("Błąd dodawania")
+    }
   }
 
   removeItem(trip:Trip){
