@@ -34,25 +34,8 @@ export class TripPageComponent implements OnInit {
 
       this.reviews = await this.reviewService.getTripReviews(id)
     });
-
-
-    this.slides[0] = {
-      src: './assets/img/angular.jpg',
-    };
-    this.slides[1] = {
-      src: './assets/img/react.jpg',
-    }
-    this.slides[2] = {
-      src: './assets/img/vue.jpg',
-    }
-
   }
 
-  slides: any[] = new Array(3).fill({id: -1, src: '', title: '', subtitle: ''});
-
-  onItemChange($event: any): void {
-    console.log('Carousel onItemChange', $event);
-  }
 
 
   ngOnDestroy() {
