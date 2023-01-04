@@ -131,9 +131,9 @@ export class TripService
   addItem(trip:Trip) {
 
     this.tripService.addItem(trip)
-
     this.trips.push(trip)
     this.filteredTrips.push(trip)
+
 
     if(this.filters.places.filter((a)=> a.name == trip.country).length == 0)
       this.filters.places.push(new CheckedPlace(trip.country, true));
@@ -167,12 +167,15 @@ export class TripService
 
   async refreshItems()
   {
-    let data = this.tripService.getItems().subscribe(change => {
+      let data = this.tripService.getItems().subscribe(change => {
 
       for(let item of change)
       {
-        this.trips.push(item)
-        this.filteredTrips.push(item)
+        if(this.trips.filter(x=>x.id == item.id).length == 0)
+        {
+          this.trips.push(item)
+          this.filteredTrips.push(item)
+        }
       }
 
       for(let i in this.filteredTrips)

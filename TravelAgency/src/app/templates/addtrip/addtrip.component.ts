@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {TripService} from "../../services/TripService";
 import {Trip} from "../../models/trip";
 import {Router} from "@angular/router";
@@ -8,7 +8,7 @@ import {Router} from "@angular/router";
   templateUrl: './addtrip.component.html',
   styleUrls: ['./addtrip.component.css']
 })
-export class AddtripComponent {
+export class AddtripComponent implements OnInit{
 
   model = new Trip();
 
@@ -39,4 +39,32 @@ export class AddtripComponent {
     'PLN',
     '€']
 
+  tmpUrl: string = "https://via.placeholder.com/600/92c952";
+
+  addUrl() {
+    this.model.urls.push(this.tmpUrl)
+  }
+
+  removeLink(param:string) {
+    this.model.urls = this.model.urls.filter(x=>x!=param)
+  }
+
+  ngOnInit(): void {
+    this.model = new Trip((new Date).getTime(),
+      "Name",
+      "Country",
+      "2022-10-10",
+      "2022-10-12",
+      1000,
+      "sagfsdgsdfgsdfnjgisndfjgns dpfng sdfgn sdfjg lskdfn gksdnfg ksdlnfg sdfg",
+      "https://via.placeholder.com/600/92c952",
+      "$",
+      0,
+      100,
+      "skifgnjsidfng spdfng sdofng [osdnfg sdfp gsdf",
+      0,
+      3,
+      ["https://via.placeholder.com/600/92c952",
+        "https://via.placeholder.com/150/771796"]);
+  }
 }

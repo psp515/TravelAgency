@@ -26,6 +26,22 @@
   margin-left: 90px;
 }
 
+.photoLine{
+  display: flex;
+  flex-direction: row;
+  column-gap: 20px;
+}
+
+.linkLine
+{
+  margin-top: 10px;
+}
+
+.text{
+  height: 100%;
+}
+
+
 
 
 @media (max-width: 1000px) {

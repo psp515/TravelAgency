@@ -9,15 +9,14 @@ import {Trip} from "../../models/trip";
 })
 export class TriplistComponent implements OnInit {
 
-  trips: Trip[] = [];
-
-  selectedTrips: number = 0;
+  isFirst: boolean = true;
 
   constructor(public  tripService: TripService) {
   }
 
-  async ngOnInit() {
-    await this.tripService.refreshItems();
+  async ngOnInit()
+  {
+      await this.tripService.refreshItems();
   }
 
   refreshSelectedTrips($event: string){
@@ -26,6 +25,6 @@ export class TriplistComponent implements OnInit {
   }
 
   refreshTrips(event: string){
-    this.trips = this.tripService.getItems()
+
   }
 }
