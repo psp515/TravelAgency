@@ -5,13 +5,11 @@ import {Subscription} from "rxjs";
 import {ActivatedRoute} from "@angular/router";
 import {ReviewService} from "../../services/ReviewService";
 import {Review} from "../../models/Review";
-import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-trip-page',
   templateUrl: './trip-page.component.html',
-  styleUrls: ['./trip-page.component.css'],
-  providers: [NgbCarouselConfig]
+  styleUrls: ['./trip-page.component.css']
 })
 export class TripPageComponent implements OnInit {
 
@@ -21,24 +19,8 @@ export class TripPageComponent implements OnInit {
 
   constructor(private tripService: TripService,
               private route: ActivatedRoute,
-              private reviewService : ReviewService,
-              config: NgbCarouselConfig) {
-    config.interval = 2000;
-    config.keyboard = true;
-    config.pauseOnHover = true;
+              private reviewService : ReviewService) {
   }
-
-  /*
-  *  <ngb-carousel *ngIf="trip.urls">
-      <div *ngFor="let image of trip.urls">
-        <ng-template ngbSlide>
-          <div class="picsum-img-wrapper">
-            <img [src]="image" alt="Random Img" />
-          </div>
-        </ng-template>
-      </div>
-    </ngb-carousel>
-    * */
 
   ngOnInit(): void {
     this.routeSub = this.route.params.subscribe(async params => {
@@ -53,7 +35,25 @@ export class TripPageComponent implements OnInit {
       this.reviews = await this.reviewService.getTripReviews(id)
     });
 
+
+    this.slides[0] = {
+      src: './assets/img/angular.jpg',
+    };
+    this.slides[1] = {
+      src: './assets/img/react.jpg',
+    }
+    this.slides[2] = {
+      src: './assets/img/vue.jpg',
+    }
+
   }
+
+  slides: any[] = new Array(3).fill({id: -1, src: '', title: '', subtitle: ''});
+
+  onItemChange($event: any): void {
+    console.log('Carousel onItemChange', $event);
+  }
+
 
   ngOnDestroy() {
     this.routeSub?.unsubscribe();
