@@ -22,6 +22,7 @@ import { TripsFilterComponent } from './components/trips-filter/trips-filter.com
 import { MainPageComponent } from './templates/main-page/main-page.component';
 import { TripHistComponent } from './templates/trip-hist/trip-hist.component';
 import { UserHeaderComponent } from './components/user-header/user-header.component';
+import { CarouselComponent } from './Molecules/carousel/carousel.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { UserHeaderComponent } from './components/user-header/user-header.compon
     TripsFilterComponent,
     MainPageComponent,
     TripHistComponent,
-    UserHeaderComponent
+    UserHeaderComponent,
+    CarouselComponent
   ],
   imports: [
     BrowserModule,

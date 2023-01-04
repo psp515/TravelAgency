@@ -8,20 +8,24 @@
 
 .trip-data{
   width: 80vw;
-  min-width: 600px;
-  min-height: 450px;
+  min-width: 400px;
   margin-top: 30px;
-  height: 50vh;
   background-color: whitesmoke;
   border-radius: 30px;
   padding: 20px;
   transition: 0.4s ease-in-out;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.carousel{
+  align-self: center;
 }
 
 .reviews{
   width: 80vw;
-  min-width: 600px;
+  min-width: 400px;
   margin-top: 30px;
   margin-bottom: 80px;
   height: auto;
@@ -29,16 +33,110 @@
   transition: 0.4s ease-in-out;
 }
 
+.carousel-wrapper{
+  height: 350px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
 
-ngb-carousel .wrapper {
-  position: relative;
-  height: 0;
-  padding-top: 55%;
+.back-image{
+  height: 32px;
+  width: 32px;
 }
-ngb-carousel .wrapper>img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
+
+.back-image-wrap{
+  padding: 11px;
+  width: fit-content;
+  height: fit-content;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
+  transition: 300ms ease-in-out;
+  cursor: pointer;
 }
+
+.back-image-wrap:hover{
+  background-color: #E5BDF6;
+}
+
+.back-ref{
+  width: fit-content;
+  height: fit-content;
+}
+
+p{
+  padding: 0;
+  margin: 0;
+  margin-top: 6px;
+}
+
+
+.counter-wrapper{
+  display: flex;
+
+}
+
+
+.buttons-section{
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  margin-bottom: 30px;
+  justify-content: center;
+  align-content: center;
+}
+
+.buttons-section-button{
+  background-color: #D8DEDE;
+  padding: 5px;
+  box-shadow: rgba(0, 0, 0, 0.33) 0 3px 8px;
+  height: 34px;
+  margin-left: 50px;
+  margin-right: 50px;
+  transition: 0.4s ease-in-out;
+  cursor: pointer;
+  width: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+
+}
+.buttons-section-button:hover{
+  scale: 1.2;
+}
+
+.buttons-section-button-text{
+  align-self: center;
+  padding: 0;
+  margin: 0;
+  font-weight: 900;
+  font-size: 30px;
+  color: #333833;
+  user-select: none;
+  width: 100%;
+  text-align: center;
+}
+
+.backgrounder {
+  align-self: center;
+  align-content: center;
+  justify-content: center;
+  border-radius: 14px;
+  min-width: 60px;
+  width: auto;
+  height: 40px;
+  display: flex;
+  transition: 0.4s ease-in-out;
+}
+
+.centred{
+  align-self: center;
+  margin-top: 20px;
+}
+
+
+
+
+

@@ -2,12 +2,56 @@
   <div class="trip-data">
 
 
-    <p>Rest</p>
+    <div>
+      <div class="back-image-wrap" (click)="goBack()">
+        <img class="back-image"
+             src="assets/undo.png">
+      </div>
+    </div>
 
-    <img src="https://via.placeholder.com/600/92c952">
+    <div class="carousel-wrapper">
+      <app-carousel class="carousel"
+                    [slides]="trip.urls"></app-carousel>
+    </div>
+
+    <h2>{{trip.name}}</h2>
+
+    <div>
+      <p><b>Coutnry:</b> {{trip.country}}</p>
+      <p><b>Price:</b> {{tripService.calculateTrip(trip)}} {{currencyService.current}}</p>
+      <p *ngIf="reviews.length!=0"><b>Grade:</b> {{ getStars()}} / 5 ({{reviews.length}} review)</p>
+      <p><b>Taking place:</b> {{trip.tripStart}} - {{trip.tripEnd}}</p>
+      <p><b>Some Informations</b></p>
+      <p>{{trip.description}}</p>
+    </div>
+
+
+    <h2 class="centred">Reserve IT now!</h2>
+
+    <section class="buttons-section">
+
+      <div class="buttons-section-button left-button" (click)="minusClicked()">
+        <p class="buttons-section-button-text">-</p>
+      </div>
+
+      <div class="backgrounder">
+        <h2 class="buttons-section-button-text">
+          {{trip.selected}}  ({{trip.available}})</h2>
+      </div>
+
+      <div class="buttons-section-button right-button"
+           (click)="plusClicked()">
+        <p class="buttons-section-button-text">+</p>
+      </div>
+
+
+    </section>
+
   </div>
 
-  <app-trip-review class="add-review "
+
+
+  <app-trip-review class="add-review"
                    [trip]="trip"
                    (refreshReviews)="refreshReviews($event)"> </app-trip-review>
 
@@ -16,5 +60,4 @@
   <div class="reviews" *ngFor="let review of reviews">
     <app-displayreview [review]="review"></app-displayreview>
   </div>
-
 </div>

@@ -2,6 +2,20 @@
   <div class="form">
     <h1>New Review</h1>
     <form (ngSubmit)="addReview()" #tripForm="ngForm">
+
+      <div class="form-group">
+
+        <label for="username">Username</label>
+        <input type="text"
+               class="form-control"
+               maxlength="100"
+               id="username"
+               required
+               [ngModel] ="review.review"
+               name="shortReview"
+               #shortReview="ngModel"/>
+      </div>
+
       <div class="form-group">
 
         <label for="shortReview">Short Review</label>
@@ -16,7 +30,16 @@
       </div>
 
       <label for="grade">Grade</label>
-      <app-trip-grade id="grade" [grade]="review.grade"> </app-trip-grade>
+      <app-trip-grade id="grade"
+                      [grade]="review.grade"> </app-trip-grade>
+
+     <div class="form-group">
+       <label for="date">Trip date</label>
+       <input
+         class="form-control"
+         type="date"
+         id="date">
+     </div>
 
       <button type="submit"
               class="btn btn-success"

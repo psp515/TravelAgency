@@ -17,9 +17,9 @@
       "cheapestTrip": false,
       "theMostExpensiveTrip": false,
       "stars" : "3",
-      "urls": ["https://via.placeholder.com/600/92c952",
+      "urls": ["assets/data/images/Vienna.jpeg",
         "https://via.placeholder.com/600/92c952",
-        "https://via.placeholder.com/600/92c952"]
+        "assets/data/images/Rome1.jpeg"]
     },
     {
       "id":"1",

@@ -1,0 +1,24 @@
+<div id="carousel"
+     class="carousel"
+     data-ride="carousel">
+
+  <div class="prev">
+    <img class="navigator"
+         (click)="getPrev()"
+         src="assets/back.png">
+  </div>
+
+  <div class="carousel-inner image-wrapper"
+       role="listbox">
+    <img class="image"
+         src="{{getSlide()}}"
+         alt="slide" />
+  </div>
+
+  <div class="next">
+
+    <img class="navigator"
+         (click)="getNext()"
+         src="assets/next.png">
+  </div>
+</div>

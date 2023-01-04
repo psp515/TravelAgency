@@ -1,0 +1,53 @@
+.carousel
+{
+  display: flex;
+  width: fit-content;
+}
+
+.image
+{
+  display: block;
+  max-height:350px;
+  width: 40vw;
+  max-width: 500px;
+  height: auto;
+  border-radius: 30px;
+  user-select: none;
+}
+
+.image-wrapper{
+  display: flex;
+}
+
+.navigator
+{
+  height: 64px;
+  width: 64px;
+  align-self: center;
+  justify-self: center;
+  border-radius: 20px;
+  transition: 300ms ease-in-out;
+  cursor: pointer;
+  user-select: none;
+}
+
+.navigator:hover{
+  height: 96px;
+  width: 96px;
+}
+
+.carousel-inner{
+  grid-column-start: 2;
+  grid-column-end: 3;
+  column-span: 3;
+}
+
+.prev{
+  display: flex;
+  background-color: transparent;
+}
+
+.next{
+  display: flex;
+  background-color: transparent;
+}
