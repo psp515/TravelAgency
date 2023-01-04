@@ -4,6 +4,7 @@
   flex-direction: column;
   align-items: center;
   justify-items: center;
+  padding-bottom: 80px;
 }
 
 .trip-data{
@@ -24,13 +25,13 @@
 }
 
 .reviews{
-  width: 80vw;
   min-width: 400px;
-  margin-top: 30px;
-  margin-bottom: 80px;
+  margin-top: 10px;
   height: auto;
-  border-radius: 30px;
   transition: 0.4s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
 }
 
 .carousel-wrapper{
@@ -136,7 +137,32 @@ p{
   margin-top: 20px;
 }
 
+.cartButton{
+  min-width: 260px;
+  min-height: 50px;
+  align-self: center;
+  width: 10vw;
+  height: 5vh;
+  background-color: #E5BDF6;
+  border-radius: 40px;
+  padding: 0;
+  flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  transition: 0.3s ease-in-out;
+  font-size: 22px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.cartButton:hover{
+  background-color: #B8C6DB;
+}
 
 
-
-
+h1{
+  margin-top: 50px;
+}

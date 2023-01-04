@@ -7,6 +7,12 @@ import {Review} from "../../models/Review";
   styleUrls: ['./displayreview.component.css']
 })
 export class DisplayreviewComponent {
-  @Input() review: Review = new Review("",-1,-1,-1,-1);
+  @Input() review: Review = new Review(0,
+    "",
+    "",
+    0,
+    "",
+    0,
+    "")
 
 }

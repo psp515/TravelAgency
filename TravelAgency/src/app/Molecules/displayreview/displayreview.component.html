@@ -1,5 +1,7 @@
 <div class="review-display">
-  <h3 class="review-user">{{review.userId}} Przy firebase Username</h3>
+  <h3 class="review-user">{{review.username}} - {{review.tripName}}</h3>
   <p class="review-text">{{review.review}}</p>
-  <p class="review-grade">Ocena: {{review.grade}}/5</p>
+  <p class="review-grade"><b>Ocena:</b> {{review.grade}}/5</p>
+  <p *ngIf="review.tripDate != ''" class="review-grade"><b>Data zakupu / skorzystania:</b>
+    {{review.tripDate}}/5</p>
 </div>

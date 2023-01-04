@@ -1,10 +1,16 @@
 .review-container{
   width: 80vw;
   min-width: 400px;
+  max-width: 800px;
   margin-top: 30px;
   background-color: whitesmoke;
   border-radius: 30px;
   padding: 20px;
   transition: 0.4s ease-in-out;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.errors{
+  margin-top: 10px;
+  padding: 10px;
 }

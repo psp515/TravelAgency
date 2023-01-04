@@ -40,16 +40,16 @@ export class TripPageComponent implements OnInit {
     });
   }
 
-
-
   ngOnDestroy() {
     this.routeSub?.unsubscribe();
   }
 
-  async refreshReviews(data:string)
+  async refreshReviews(data:Review)
   {
     //TODO
     //this.reviews = await this.reviewService.getTripReviews(this.trip.id);
+
+    this.reviews.push(data)
   }
 
   goBack() {
@@ -60,9 +60,16 @@ export class TripPageComponent implements OnInit {
     if (this.reviews.length == 0)
       return 0;
 
-    return this.reviews.reduce((accumulator, obj) => {
-      return accumulator + obj.grade;
-    }, 0) / this.reviews.length;
+    let sum = 0;
+
+    // TS IS FUCKED -> CODE BELOW WITHOUT * 1 WAS
+    // CREATING A STRING EXAMPLE:
+    // GRADES 4 5 GIVE SUM 045 WTF
+
+    for(let i in this.reviews)
+      sum = sum + this.reviews[i].grade * 1
+
+    return sum / this.reviews.length;
   }
 
   minusClicked() {
@@ -86,5 +93,10 @@ export class TripPageComponent implements OnInit {
 
     this.trip.selected+=1;
     this.tripService.updateBarData();
+  }
+
+  goToCart() {
+
+    this.router.navigate(['/cart']);
   }
 }

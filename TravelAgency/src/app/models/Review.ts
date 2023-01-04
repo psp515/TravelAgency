@@ -2,13 +2,12 @@
 
 export class Review
 {
-  public review: string = '';
-
-  constructor(review: string,
-              public reviewId: number,
+  constructor(public reviewId: number,
+              public username: string,
+              public tripName: string,
+              public tripId: number,
+              public review: string,
               public grade: number,
-              public userId: number,
-              public tripId: number) {
-    this.review = review;
-  }
+              public tripDate: string)
+  {}
 }

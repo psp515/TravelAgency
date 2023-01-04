@@ -3,64 +3,20 @@
   [
     {
       "reviewId" : "0",
+      "username" : "testUser",
+      "tripName" : "Roma Vini",
       "tripId" : "0",
-      "userId" : "-1",
       "review" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
-      "grade" : "4"
-    },{
-    "reviewId" : "1",
-    "tripId" : "1",
-    "userId" : "-1",
+      "grade" : "4",
+      "tripDate": "2022-10-10"
+    },
+    {
+    "reviewId" : "0",
+    "username" : "testUser",
+    "tripName" : "Roma Vini",
+    "tripId" : "0",
     "review" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
-    "grade" : "4"
-  },{
-    "reviewId" : "2",
-    "tripId" : "2",
-    "userId" : "-1",
-    "review" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
-    "grade" : "4"
-  },{
-    "reviewId" : "3",
-    "tripId" : "3",
-    "userId" : "-1",
-    "review" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
-    "grade" : "4"
-  },{
-    "reviewId" : "4",
-    "tripId" : "4",
-    "userId" : "-1",
-    "review" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
-    "grade" : "4"
-  },{
-    "reviewId" : "5",
-    "tripId" : "5",
-    "userId" : "-1",
-    "review" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
-    "grade" : "4"
-  },{
-    "reviewId" : "6",
-    "tripId" : "6",
-    "userId" : "-1",
-    "review" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
-    "grade" : "4"
-  },{
-    "reviewId" : "7",
-    "tripId" : "7",
-    "userId" : "-1",
-    "review" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
-    "grade" : "4"
-  },{
-    "reviewId" : "8",
-    "tripId" : "8",
-    "userId" : "-1",
-    "review" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
-    "grade" : "4"
-  },{
-    "reviewId" : "9",
-    "tripId" : "9",
-    "userId" : "-1",
-    "review" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
-    "grade" : "4"
-  }
-  ]
+    "grade" : "5",
+    "tripDate": "2022-10-10"
+  }]
 }

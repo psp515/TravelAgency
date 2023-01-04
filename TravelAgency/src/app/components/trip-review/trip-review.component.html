@@ -1,49 +1,59 @@
 <div class="review-container">
   <div class="form">
-    <h1>New Review</h1>
+    <h1>New Review for {{trip.name}}</h1>
     <form (ngSubmit)="addReview()" #tripForm="ngForm">
 
       <div class="form-group">
-
         <label for="username">Username</label>
         <input type="text"
                class="form-control"
                maxlength="100"
                id="username"
-               required
-               [ngModel] ="review.review"
+               [(ngModel)] ="review.username"
+               [ngModelOptions]="{standalone: true}"
                name="shortReview"
                #shortReview="ngModel"/>
       </div>
 
       <div class="form-group">
-
         <label for="shortReview">Short Review</label>
         <textarea type="text"
                   class="form-control"
-                  maxlength="100"
+                  maxlength="500"
+                  [(ngModel)]="defaultValue"
                   id="shortReview"
-                  required
-                  [ngModel] ="review.review"
                   name="shortReview"
-                  #shortReview="ngModel"></textarea>
+        (change)="doOnChangeText($event)">{{review.review}}</textarea>
       </div>
 
-      <label for="grade">Grade</label>
-      <app-trip-grade id="grade"
-                      [grade]="review.grade"> </app-trip-grade>
+      <div>
+        <label for="grade">Grade</label>
+        <app-trip-grade id="grade"
+                        name="grade"
+                        [(ngModel)]="review.grade"
+        (ngModelChange)="changeGrade($event)"> </app-trip-grade>
+      </div>
 
      <div class="form-group">
        <label for="date">Trip date</label>
-       <input
-         class="form-control"
-         type="date"
-         id="date">
+       <input class="form-control"
+              type="date"
+              [(ngModel)] ="review.tripDate"
+              [ngModelOptions]="{standalone: true}"
+              id="date">
      </div>
 
       <button type="submit"
-              class="btn btn-success"
-              [disabled]="!tripForm.form.valid">Add Review</button>
+              class="btn btn-success">Add Review</button>
     </form>
   </div>
+
+  <div class="errors">
+    <div *ngFor="let error of errors">
+      <div class="alert alert-danger">
+        {{error}}
+      </div>
+    </div>
+  </div>
+
 </div>

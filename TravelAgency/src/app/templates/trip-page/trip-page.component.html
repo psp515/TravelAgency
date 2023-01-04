@@ -1,7 +1,6 @@
 <div class="container">
   <div class="trip-data">
 
-
     <div>
       <div class="back-image-wrap" (click)="goBack()">
         <img class="back-image"
@@ -25,7 +24,6 @@
       <p>{{trip.description}}</p>
     </div>
 
-
     <h2 class="centred">Reserve IT now!</h2>
 
     <section class="buttons-section">
@@ -47,8 +45,12 @@
 
     </section>
 
-  </div>
+    <div class="cartButton"
+         (click)="goToCart()">
+      Go To Cart
+    </div>
 
+  </div>
 
 
   <app-trip-review class="add-review"
@@ -56,8 +58,10 @@
                    (refreshReviews)="refreshReviews($event)"> </app-trip-review>
 
 
-  <h1>Reviews </h1>
-  <div class="reviews" *ngFor="let review of reviews">
-    <app-displayreview [review]="review"></app-displayreview>
+  <h1 *ngIf="reviews.length != 0">Reviews </h1>
+  <div *ngIf="reviews.length != 0" class="reviews">
+    <div *ngFor="let review of reviews">
+      <app-displayreview [review]="review"></app-displayreview>
+    </div>
   </div>
 </div>
