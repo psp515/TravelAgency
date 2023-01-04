@@ -14,6 +14,8 @@ export class TripComponent {
   @Input() trip: Trip
   @Input() disableButtons: boolean = false;
 
+  const :number = 1;
+
   constructor(public tripService: TripService, private router: Router, public currencyService: CurrencyService) {
     this.trip = new Trip();
   }
@@ -33,8 +35,12 @@ export class TripComponent {
       return;
     }
 
-    this.trip.selected+=1;
+    this.trip.selected++;
     this.callParent();
+
+    if(this.trip.selected>this.trip.available)
+      this.trip.selected = this.trip.available
+
   }
 
   minusClicked(){

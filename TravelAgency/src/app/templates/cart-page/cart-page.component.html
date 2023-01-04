@@ -1,8 +1,8 @@
 <div class="container">
   <div class="informator">
-    <p class="description">Total Cost: {{totalCost}} {{currencyService.current}}</p>
+    <p class="description">Total Cost: {{this.tripService.userBarData.tripsTotalCost}} {{currencyService.current}}</p>
     <div class="cart-line"></div>
-    <p class="description">Total Trips: {{totalTrips}}</p>
+    <p class="description">Total Trips: {{this.tripService.userBarData.selectedTrips}}</p>
     <div class="cart-line"></div>
     <button class="btn btn-default" (click)="buyAllTrips()"> Buy All </button>
   </div>

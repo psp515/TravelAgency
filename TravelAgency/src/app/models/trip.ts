@@ -1,6 +1,3 @@
-import {ServiceLocator} from "../locator.sevice";
-import {CurrencyService} from "../services/CurrencyService";
-
 
 export class Trip {
   public cheapestTrip: boolean = false;

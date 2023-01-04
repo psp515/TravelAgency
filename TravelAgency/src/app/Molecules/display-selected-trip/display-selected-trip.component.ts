@@ -35,6 +35,7 @@ export class DisplaySelectedTripComponent implements OnInit
     {
       this.tripService.tripBought(this.trip.id, this.trip.selected)
       this.tripBought.emit(this.trip.id)
+      this.tripService.updateBarData()
     }
     else {
       alert(response.ErrorMessage)

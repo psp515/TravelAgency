@@ -26,8 +26,7 @@ import { CarouselComponent } from './Molecules/carousel/carousel.component';
 import {AngularFireModule} from "@angular/fire/compat";
 import { firebaseConfig } from 'src/environment/environment';
 import {AngularFireDatabaseModule} from "@angular/fire/compat/database";
-import {AngularFireStorage, AngularFireStorageModule} from "@angular/fire/compat/storage";
-
+import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 @NgModule({
   declarations: [
     AppComponent,

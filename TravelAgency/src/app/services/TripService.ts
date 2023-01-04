@@ -1,12 +1,11 @@
-
 import {Trip} from "../models/trip";
 import {Injectable} from "@angular/core";
-import {HttpTripsService} from "./HttpTripsService";
 import {CurrencyConverter} from "../tools/CurrencyConverter";
 import {FilterOptions} from "../models/filterModel"
 import {CheckedPlace} from "../models/checkedPlace";
 import {UserBarModel} from "../models/userBarModel";
 import {CurrencyService} from "./CurrencyService";
+import {HttpTripService} from "./HttpTripService";
 
 @Injectable({
   providedIn: 'root'
@@ -21,36 +20,9 @@ export class TripService
 
   public userBarData: UserBarModel
 
-  constructor(tripsService: HttpTripsService, private currencyService : CurrencyService) {
-
+  constructor(private tripService: HttpTripService,
+              private currencyService : CurrencyService) {
     this.userBarData = new UserBarModel(0,0,"","","")
-
-    // TODO : load data from firebase
-    fetch("./assets/data/trips.json")
-      .then(res => res.json())
-      .then(json => {
-        let tmp = json.trips
-
-        for (let item in tmp) {
-          let x = tmp[item] as Trip
-          x.selected = 0
-          this.trips.push(x)
-          this.filteredTrips.push(x)
-        }
-
-        this.updateExtremes();
-
-        for(let i in this.filteredTrips)
-        {
-          let item = this.filteredTrips[i]
-          if(this.filters.places.filter((a) => a.name == item.country).length == 0)
-            this.filters.places.push(new CheckedPlace(item.country, true));
-        }
-
-        this.refreshFilters();
-
-      })
-
     this.filters = new FilterOptions();
   }
 
@@ -123,7 +95,6 @@ export class TripService
   clearFilters() {
     this.filteredTrips = []
 
-
     for(let i in this.trips)
       this.filteredTrips.push(this.trips[i])
 
@@ -158,6 +129,9 @@ export class TripService
   //region CRUD
 
   addItem(trip:Trip) {
+
+    this.tripService.addItem(trip)
+
     this.trips.push(trip)
     this.filteredTrips.push(trip)
 
@@ -184,7 +158,6 @@ export class TripService
   }
 
   getItem(id:number) : Trip{
-
     for(let i = 0;i < this.trips.length;i++)
       if (this.trips[i].id == id)
         return this.trips[i]
@@ -192,10 +165,54 @@ export class TripService
     return new Trip();
   }
 
+  async refreshItems()
+  {
+    let data = this.tripService.getItems().subscribe(change => {
+
+      for(let item of change)
+      {
+        this.trips.push(item)
+        this.filteredTrips.push(item)
+      }
+
+      for(let i in this.filteredTrips)
+      {
+        let item = this.filteredTrips[i]
+        if(this.filters.places.filter((a) => a.name == item.country).length == 0)
+          this.filters.places.push(new CheckedPlace(item.country, true));
+      }
+
+      this.refreshFilters();
+
+    });
+
+
+  }
+
   //endregion
 
+  injectData(trips:Trip[])
+  {
+    for(let i of trips)
+    {
+      this.trips.push(i)
+      this.trips.push(i)
+    }
+
+    this.updateExtremes();
+
+    for(let i in this.filteredTrips)
+    {
+      let item = this.filteredTrips[i]
+      if(this.filters.places.filter((a) => a.name == item.country).length == 0)
+        this.filters.places.push(new CheckedPlace(item.country, true));
+    }
+
+    this.refreshFilters();
+  }
+
   updateBarData() {
-     this.userBarData.selectedTrips = this.trips.reduce((accumulator, trip) => {return accumulator + trip.selected;}, 0);
+     this.userBarData.selectedTrips = this.trips.reduce((accumulator, trip) => {return accumulator + trip.selected*1;}, 0);
      let converter = new CurrencyConverter();
      this.userBarData.tripsTotalCost = Math.round(
        100*this.trips.reduce((accumulator, trip) =>

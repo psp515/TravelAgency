@@ -14,22 +14,18 @@ export class TriplistComponent implements OnInit {
   selectedTrips: number = 0;
 
   constructor(public  tripService: TripService) {
-    this.tripService = tripService
   }
 
-  ngOnInit(){
-    this.trips = this.tripService.getItems()
-    this.refreshSelectedTrips("start");
+  async ngOnInit() {
+    await this.tripService.refreshItems();
   }
 
   refreshSelectedTrips($event: string){
     this.tripService.updateBarData();
-    this.selectedTrips = this.tripService.userBarData.selectedTrips;
     this.tripService.updateExtremes();
   }
 
   refreshTrips(event: string){
     this.trips = this.tripService.getItems()
   }
-
 }

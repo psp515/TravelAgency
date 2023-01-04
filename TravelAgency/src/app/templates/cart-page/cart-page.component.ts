@@ -16,7 +16,9 @@ export class CartPageComponent implements OnInit{
   totalCost: number = 0;
   totalTrips: number = 0
 
-  constructor(private tripService : TripService, public currencyService: CurrencyService, private histService : TripHistService) {
+  constructor(public tripService : TripService,
+              public currencyService: CurrencyService,
+              private histService : TripHistService) {
   }
 
   ngOnInit(): void
@@ -38,20 +40,23 @@ export class CartPageComponent implements OnInit{
 
   buyAllTrips(){
     let errors = "";
-    for(let i in this.selectedTrips)
+    for(let trip of this.selectedTrips)
     {
-      let trip = this.selectedTrips[i]
-
-      let response = this.histService.addTripToHist(trip);
-
-      if(response.IsSuccesfull)
-      {
-        this.tripService.tripBought(trip.id,trip.selected)
-        this.removeTripFromList(trip.id)
+      try{
+        let response = this.histService.addTripToHist(trip);
+        if(response.IsSuccesfull)
+        {
+          this.tripService.tripBought(trip.id,trip.selected)
+          this.removeTripFromList(trip.id)
+        }
+        else
+          errors += response.ErrorMessage;
       }
-      else
-        errors += response.ErrorMessage;
+      catch (Exception ){
+      }
     }
+
+    this.tripService.updateBarData()
 
     if(errors == "")
       return
