@@ -1,0 +1,13 @@
+
+/trips -> lista wycieczek
+/trips/:id -> wycieczka o danym id
+
+/reviews -> lista list recezji
+/reviews/:tripID -> lista recezji wycieczko o tripID
+/reviews/:tripID/:reviewId -> recezja wyczieski tripId
+
+/hist -> lista list histori wycieczek
+/hist/:userID -> historia wycieczek użytkownika o userID
+
+/cart -> lista koszyków użytkowników
+/cart/:userID -> koszyk użytkownika o userID
