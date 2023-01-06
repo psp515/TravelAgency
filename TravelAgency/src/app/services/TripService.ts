@@ -134,6 +134,7 @@ export class TripService
     this.trips.push(trip)
     this.filteredTrips.push(trip)
 
+    //TODO NIE ZNAMY ID
 
     if(this.filters.places.filter((a)=> a.name == trip.country).length == 0)
       this.filters.places.push(new CheckedPlace(trip.country, true));
@@ -142,9 +143,12 @@ export class TripService
     this.updateExtremes()
   }
 
-  deleteItem(id:number) {
-    this.filteredTrips = this.filteredTrips.filter(trip => trip.id !== id);
-    this.trips = this.trips.filter(trip => trip.id !== id);
+  async deleteItem(id:string) {
+    this.filteredTrips = this.filteredTrips.filter(trip => trip.key !== id);
+    this.trips = this.trips.filter(trip => trip.key !== id);
+
+    await this.tripService.removeItem(id)
+
     this.clearFilters();
     this.updateExtremes()
   }
@@ -157,9 +161,9 @@ export class TripService
     return this.filteredTrips;
   }
 
-  getItem(id:number) : Trip{
+  getItem(id:string) : Trip{
     for(let i = 0;i < this.trips.length;i++)
-      if (this.trips[i].id == id)
+      if (this.trips[i].key == id)
         return this.trips[i]
 
     return new Trip();
@@ -171,7 +175,7 @@ export class TripService
 
       for(let item of change)
       {
-        if(this.trips.filter(x=>x.id == item.id).length == 0)
+        if(this.trips.filter(x=>x.key == item.key).length == 0)
         {
           this.trips.push(item)
           this.filteredTrips.push(item)
@@ -194,25 +198,6 @@ export class TripService
 
   //endregion
 
-  injectData(trips:Trip[])
-  {
-    for(let i of trips)
-    {
-      this.trips.push(i)
-      this.trips.push(i)
-    }
-
-    this.updateExtremes();
-
-    for(let i in this.filteredTrips)
-    {
-      let item = this.filteredTrips[i]
-      if(this.filters.places.filter((a) => a.name == item.country).length == 0)
-        this.filters.places.push(new CheckedPlace(item.country, true));
-    }
-
-    this.refreshFilters();
-  }
 
   updateBarData() {
      this.userBarData.selectedTrips = this.trips.reduce((accumulator, trip) => {return accumulator + trip.selected*1;}, 0);
@@ -231,8 +216,8 @@ export class TripService
     return this.currencyService.convertToActualCurrency(trip.price, trip.currency)
   }
 
-  tripBought(id:number, bought: number) {
-    let trip = this.trips.filter((x)=>x.id == id)[0]
+  tripBought(id:string, bought: number) {
+    let trip = this.trips.filter((x)=>x.key == id)[0]
 
     if(trip == null)
       return;

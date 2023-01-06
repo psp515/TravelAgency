@@ -20,7 +20,7 @@ export class AddtripComponent implements OnInit{
 
   onSubmit()
   {
-    this.model.id = (new Date).getTime()
+    this.model.key = (new Date).getTime().toString()
     this.model.likes = 0
     this.model.image = "https://via.placeholder.com/600/92c952";
     this.tripService.addItem(this.model)
@@ -50,7 +50,7 @@ export class AddtripComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.model = new Trip((new Date).getTime(),
+    this.model = new Trip((new Date).getTime().toString(),
       "Name",
       "Country",
       "2022-10-10",

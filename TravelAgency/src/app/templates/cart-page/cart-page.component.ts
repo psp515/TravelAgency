@@ -3,6 +3,7 @@ import {TripService} from "../../services/TripService";
 import {CurrencyService} from "../../services/CurrencyService";
 import {Trip} from "../../models/trip";
 import {TripHistService} from "../../services/TripHistService";
+import {TripHist} from "../../models/TripHist";
 
 @Component({
   selector: 'app-cart-page',
@@ -43,11 +44,23 @@ export class CartPageComponent implements OnInit{
     for(let trip of this.selectedTrips)
     {
       try{
-        let response = this.histService.addTripToHist(trip);
+
+        let triphist = new TripHist("",
+          '',
+          trip.key,
+          trip.country,
+          trip.tripStart,
+          trip.tripEnd,
+          trip.price*trip.selected,
+          trip.currency,
+          trip.selected)
+
+        let response = this.histService.addTripToHist(triphist);
+
         if(response.IsSuccesfull)
         {
-          this.tripService.tripBought(trip.id,trip.selected)
-          this.removeTripFromList(trip.id)
+          this.tripService.tripBought(trip.key,trip.selected)
+          this.removeTripFromList(trip.key)
         }
         else
           errors += response.ErrorMessage;
@@ -64,7 +77,7 @@ export class CartPageComponent implements OnInit{
     alert(errors)
   }
 
-  removeTripFromList(id: number) {
-    this.selectedTrips = this.selectedTrips.filter((x)=> x.id != id)
+  removeTripFromList(id: string) {
+    this.selectedTrips = this.selectedTrips.filter((x)=> x.key != id)
   }
 }

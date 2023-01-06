@@ -1,33 +1,38 @@
 import {Review} from "../models/Review";
-import {TripService} from "./TripService";
 import {Injectable} from "@angular/core";
-
-// po dodaniu review to działa tak że autoamtycznie updatowyany jest odpowiedni trip.
+import {AngularFireDatabase, AngularFireList} from "@angular/fire/compat/database";
+import {map, Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReviewService{
 
-  constructor(private tripsService: TripService) {
+  reviewsRef!: AngularFireList<any>;
+
+  constructor(private db: AngularFireDatabase) {
 
   }
 
-  async getTripReviews(id:number){
-    let review: Review[] = []
 
-    await fetch("./assets/data/reviews.json")
-      .then(res => res.json())
-      .then(json => {
-          review = json.reviews.filter((x: Review) => x.tripId == id)
-        })
 
-    return review
+  getTripReviews(key:string) : Observable<Review[]>{
+
+    this.reviewsRef = this.db.list('reviews/' + key);
+
+    return this.reviewsRef.snapshotChanges().pipe(map(changes =>
+      changes.map(c => ({key: c.payload.key, ...c.payload.val()}))));
   }
 
   addTripReview(review:Review){
-    //TODO
-    //TODO : update TripsService Collection
+    try{
+      this.reviewsRef = this.db.list('reviews/' + review.tripId);
+      this.reviewsRef.push(review)
+    }
+    catch (Exception)
+    {
+      console.log("Błąd dodawania recęzji.")
+    }
   }
 
 }

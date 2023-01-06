@@ -4,7 +4,7 @@ export class Trip {
   public theMostExpensiveTrip: boolean = false;
 
 
-  constructor(public id: number = -1,
+  constructor(public key: string = '',
               public name: string = "",
               public country: string = "",
               public tripStart: string = "",

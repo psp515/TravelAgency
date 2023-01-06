@@ -16,7 +16,7 @@ export class TriplistComponent implements OnInit {
 
   async ngOnInit()
   {
-      await this.tripService.refreshItems();
+    await this.tripService.refreshItems();
   }
 
   refreshSelectedTrips($event: string){

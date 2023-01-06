@@ -23,9 +23,9 @@ export class TripHist
     return "In Progress"
   }
 
-  constructor(public id: number = -1,
-              public userId:number = 0,
-              public tripId:number = 0,
+  constructor(public key: string = '',
+              public userId:string = '',
+              public tripId:string = '',
               public country: string = "",
               public tripStart: string = "",
               public tripEnd: string = "",

@@ -36,7 +36,11 @@ export class TripPageComponent implements OnInit {
 
       console.log(this.trip)
 
-      this.reviews = await this.reviewService.getTripReviews(id)
+      await this.reviewService.getTripReviews(id).forEach(list=>
+      {
+        for (let item of list)
+          this.reviews.push(item)
+      })
     });
   }
 

@@ -21,12 +21,12 @@ export class TripReviewComponent implements OnInit
   errors:string[]=[]
 
   constructor(private reviewService: ReviewService) {
-    this.review = new Review(new Date().getMilliseconds(), "", "", 0, "", 2, "");
+    this.review = new Review("", "", "", '', "", 2, "");
     this.trip = new Trip();
   }
 
   ngOnInit(): void {
-    this.review.tripId = this.trip.id;
+    this.review.tripId = this.trip.key;
     this.review.tripName = this.trip.name;
   }
 
@@ -54,7 +54,7 @@ export class TripReviewComponent implements OnInit
     if(!this.Validate())
       return;
 
-    let copy = new Review(new Date().getMilliseconds(),
+    let copy = new Review("",
       this.review.username,
       this.trip.name,
       this.review.tripId,
@@ -62,7 +62,7 @@ export class TripReviewComponent implements OnInit
       this.review.grade,
       this.review.tripDate)
 
-    this.review = new Review(new Date().getMilliseconds(), "", "", 0, "", 2, "")
+    this.review = new Review("", "", "", '', "", 2, "")
     this.tripForm!.reset();
     this.review.review = "";
     this.reviewService.addTripReview(copy);

@@ -23,9 +23,14 @@ export class TripHistComponent implements OnInit {
   {
   }
 
-  ngOnInit(): void {
-    this.histTrips = this.tripHistService.getUserHist()
-    this.filteredHistTrips = this.tripHistService.getUserHist()
+  async ngOnInit(): Promise<void> {
+     await this.tripHistService.getUserHist().forEach(list =>
+     {
+       for(let item of list){
+         this.filteredHistTrips.push(item)
+         this.histTrips.push(item)
+       }
+     })
   }
 
   filterTrips()

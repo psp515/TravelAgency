@@ -62,7 +62,7 @@ export class TripComponent {
     if (this.disableButtons)
       return;
 
-    this.tripService.deleteItem(this.trip.id);
+    this.tripService.deleteItem(this.trip.key);
     this.refreshTrips.emit('refreshTrips');
     this.callParent();
   }
@@ -71,7 +71,7 @@ export class TripComponent {
     if (this.disableButtons)
       return;
 
-    this.router.navigate(['/trip/'+this.trip.id, ]);
+    this.router.navigate(['/trip/'+this.trip.key, ]);
   }
 
   colorfiller = () => {

@@ -3,6 +3,7 @@ import {Trip} from "../../models/trip";
 import {TripService} from "../../services/TripService";
 import {TripHistService} from "../../services/TripHistService";
 import {CurrencyService} from "../../services/CurrencyService";
+import {TripHist} from "../../models/TripHist";
 
 @Component({
   selector: 'app-display-selected-trip',
@@ -13,7 +14,7 @@ export class DisplaySelectedTripComponent implements OnInit
 {
   @Input() trip: Trip = new Trip();
 
-  @Output() tripBought = new EventEmitter<number>();
+  @Output() tripBought = new EventEmitter<string>();
 
   public total : number = 0;
   public single : number = 0
@@ -30,11 +31,21 @@ export class DisplaySelectedTripComponent implements OnInit
   }
 
   buyTrip(){
-    let response =  this.histService.addTripToHist(this.trip);
+    let triphist = new TripHist("",
+      '',
+      this.trip.key,
+      this.trip.country,
+      this.trip.tripStart,
+      this.trip.tripEnd,
+      this.trip.price*this.trip.selected,
+      this.trip.currency,
+      this.trip.selected)
+
+    let response =  this.histService.addTripToHist(triphist);
     if(response.IsSuccesfull)
     {
-      this.tripService.tripBought(this.trip.id, this.trip.selected)
-      this.tripBought.emit(this.trip.id)
+      this.tripService.tripBought(this.trip.key, this.trip.selected)
+      this.tripBought.emit(this.trip.key)
       this.tripService.updateBarData()
     }
     else {

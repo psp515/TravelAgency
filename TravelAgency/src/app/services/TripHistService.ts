@@ -1,10 +1,12 @@
 import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
 import {Trip} from "../models/trip";
 import {TripHist} from "../models/TripHist";
 import {CurrencyService} from "./CurrencyService";
-import {ServiceLocator} from "../locator.sevice";
 import {Response} from "../models/response";
+import {UserService} from "./UserService";
+import {AngularFireDatabase, AngularFireList} from "@angular/fire/compat/database";
+import {map, Observable} from "rxjs";
+import {Review} from "../models/Review";
 
 
 @Injectable({
@@ -12,42 +14,35 @@ import {Response} from "../models/response";
 })
 export class TripHistService
 {
-  trips : TripHist[] = [];
 
-  constructor(private currencyService:CurrencyService) {
+  histTripsRef!: AngularFireList<any>;
+
+  constructor(private currencyService:CurrencyService,
+              private db: AngularFireDatabase,
+              private userService:UserService) {
 
   }
 
-  getUserHist() : TripHist[]
+
+  getUserHist() : Observable<TripHist[]>
   {
-    let trips : TripHist[] = []
+    this.histTripsRef = this.db.list('hist/' + this.userService.currentUserId);
 
-    let data = fetch("./assets/data/tripsHist.json")
-      .then(res => res.json())
-      .then(json => {
-        let tmp = json.trips
-        for (let item in tmp)
-        {
-          let x = tmp[item] as TripHist
-          trips.push(new TripHist(x.id,
-            x.userId,
-            x.tripId,
-            x.country,
-            x.tripStart,
-            x.tripEnd,
-            x.price,
-            x.currency,
-            x.boughtTrips))
-        }
-      });
-
-    return trips;
+    return this.histTripsRef.snapshotChanges().pipe(map(changes =>
+      changes.map(c => ({key: c.payload.key, ...c.payload.val()}))));
   }
 
-  addTripToHist(trip:Trip) : Response
+  addTripToHist(hist: TripHist) : Response
   {
-    //Adds to hist
-    return new Response();
+    try{
+      this.histTripsRef = this.db.list('hist/' + this.userService.currentUserId);
+      this.histTripsRef.push(hist)
+
+      return new Response()
+    }
+    catch (error){
+      return new Response(false);
+    }
   }
 
   //Helpers
