@@ -24,14 +24,11 @@ export class HttpTripService{
     return this.trips
   }
 
-  addItem(trip:Trip)
-  {
-    try
-    {
-      this.tripsRef.push(trip);
-    }
-    catch (Exception)
-    {
+  async addItem(trip: Trip) {
+    try {
+      trip.key = new Date().getTime().toString()
+      await this.tripsRef.set(trip.key, trip)
+    } catch (Exception) {
       console.log("Błąd dodawania")
     }
   }

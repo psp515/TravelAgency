@@ -32,15 +32,14 @@ export class TripHistService
       changes.map(c => ({key: c.payload.key, ...c.payload.val()}))));
   }
 
-  addTripToHist(hist: TripHist) : Response
-  {
-    try{
+  async addTripToHist(hist: TripHist): Promise<Response> {
+    try {
       this.histTripsRef = this.db.list('hist/' + this.userService.currentUserId);
-      this.histTripsRef.push(hist)
+      hist.key = new Date().getTime().toString()
+      await this.histTripsRef.set(hist.key, hist)
 
       return new Response()
-    }
-    catch (error){
+    } catch (error) {
       return new Response(false);
     }
   }

@@ -30,25 +30,23 @@ export class DisplaySelectedTripComponent implements OnInit
     this.total = this.single * this.trip.selected
   }
 
-  buyTrip(){
+  async buyTrip() {
     let triphist = new TripHist("",
       '',
       this.trip.key,
       this.trip.country,
       this.trip.tripStart,
       this.trip.tripEnd,
-      this.trip.price*this.trip.selected,
+      this.trip.price * this.trip.selected,
       this.trip.currency,
       this.trip.selected)
 
-    let response =  this.histService.addTripToHist(triphist);
-    if(response.IsSuccesfull)
-    {
+    let response = await this.histService.addTripToHist(triphist);
+    if (response.IsSuccesfull) {
       this.tripService.tripBought(this.trip.key, this.trip.selected)
       this.tripBought.emit(this.trip.key)
       this.tripService.updateBarData()
-    }
-    else {
+    } else {
       alert(response.ErrorMessage)
     }
   }

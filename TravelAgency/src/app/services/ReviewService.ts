@@ -24,13 +24,12 @@ export class ReviewService{
       changes.map(c => ({key: c.payload.key, ...c.payload.val()}))));
   }
 
-  addTripReview(review:Review){
-    try{
+  async addTripReview(review: Review) {
+    try {
       this.reviewsRef = this.db.list('reviews/' + review.tripId);
-      this.reviewsRef.push(review)
-    }
-    catch (Exception)
-    {
+      review.key = new Date().getTime().toString()
+      await this.reviewsRef.set(review.key, review)
+    } catch (Exception) {
       console.log("Błąd dodawania recęzji.")
     }
   }

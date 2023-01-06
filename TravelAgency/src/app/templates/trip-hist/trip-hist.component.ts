@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {TripHistService} from "../../services/TripHistService";
 import {TripHist} from "../../models/TripHist";
 import {CurrencyService} from "../../services/CurrencyService";
+import {TripHistWrapper} from "../../models/tripHistWrapper";
 
 @Component({
   selector: 'app-trip-hist',
@@ -11,7 +12,6 @@ import {CurrencyService} from "../../services/CurrencyService";
 export class TripHistComponent implements OnInit {
 
   histTrips: TripHist[] = []
-
   filteredHistTrips : TripHist[] = []
 
   awaiting = true;
@@ -19,7 +19,8 @@ export class TripHistComponent implements OnInit {
   inProgress = true;
 
   constructor(public tripHistService: TripHistService,
-              public currencyService: CurrencyService)
+              public currencyService: CurrencyService,
+              public wrapper: TripHistWrapper)
   {
   }
 
@@ -37,13 +38,13 @@ export class TripHistComponent implements OnInit {
   {
     this.filteredHistTrips = this.histTrips.filter((trip) => {
 
-      if (this.awaiting && trip.state() == 'Awaiting')
+      if (this.awaiting && this.wrapper.state(trip) == 'Awaiting')
         return true
 
-      if (this.finished && trip.state() == 'Finished')
+      if (this.finished &&  this.wrapper.state(trip) == 'Finished')
         return true
 
-      return this.inProgress && trip.state() == 'In Progress';
+      return this.inProgress &&  this.wrapper.state(trip)  == 'In Progress';
     })
   }
 }

@@ -32,7 +32,7 @@
         <div class="histwrapper">
           <p><b>Country:</b> {{trip.country}}</p>
           <p><b>Total pirce:</b> {{tripHistService.getTotalPrice(trip)}} {{currencyService.current}}</p>
-          <p><b>State:</b> {{trip.state()}}</p>
+          <p><b>State:</b> {{wrapper.state(trip)}}</p>
         </div>
         <p class="datehist">{{trip.tripStart}} - {{trip.tripEnd}}</p>
       </div>

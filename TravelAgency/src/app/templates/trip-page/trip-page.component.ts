@@ -34,12 +34,11 @@ export class TripPageComponent implements OnInit {
       if(trip != null)
         this.trip = trip;
 
-      console.log(this.trip)
-
       await this.reviewService.getTripReviews(id).forEach(list=>
       {
         for (let item of list)
-          this.reviews.push(item)
+          if(this.reviews.filter(x=>x.key==item.key).length==0)
+            this.reviews.push(item)
       })
     });
   }
@@ -50,14 +49,11 @@ export class TripPageComponent implements OnInit {
 
   async refreshReviews(data:Review)
   {
-    //TODO
-    //this.reviews = await this.reviewService.getTripReviews(this.trip.id);
-
     this.reviews.push(data)
   }
 
-  goBack() {
-    this.router.navigate(['/trips']);
+  async goBack() {
+    await this.router.navigate(['/trips']);
   }
 
   getStars(){
@@ -71,7 +67,7 @@ export class TripPageComponent implements OnInit {
     // GRADES 4 5 GIVE SUM 045 WTF
 
     for(let i in this.reviews)
-      sum = sum + this.reviews[i].grade * 1
+      sum = sum + parseInt(this.reviews[i].grade.toString())
 
     return sum / this.reviews.length;
   }
@@ -99,8 +95,7 @@ export class TripPageComponent implements OnInit {
     this.tripService.updateBarData();
   }
 
-  goToCart() {
-
-    this.router.navigate(['/cart']);
+  async goToCart() {
+    await this.router.navigate(['/cart']);
   }
 }

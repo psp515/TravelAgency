@@ -39,11 +39,10 @@ export class CartPageComponent implements OnInit{
         }, 0))/100
   }
 
-  buyAllTrips(){
+  async buyAllTrips() {
     let errors = "";
-    for(let trip of this.selectedTrips)
-    {
-      try{
+    for (let trip of this.selectedTrips) {
+      try {
 
         let triphist = new TripHist("",
           '',
@@ -51,27 +50,24 @@ export class CartPageComponent implements OnInit{
           trip.country,
           trip.tripStart,
           trip.tripEnd,
-          trip.price*trip.selected,
+          trip.price * trip.selected,
           trip.currency,
           trip.selected)
 
-        let response = this.histService.addTripToHist(triphist);
+        let response = await this.histService.addTripToHist(triphist);
 
-        if(response.IsSuccesfull)
-        {
-          this.tripService.tripBought(trip.key,trip.selected)
+        if (response.IsSuccesfull) {
+          this.tripService.tripBought(trip.key, trip.selected)
           this.removeTripFromList(trip.key)
-        }
-        else
+        } else
           errors += response.ErrorMessage;
-      }
-      catch (Exception ){
+      } catch (Exception) {
       }
     }
 
     this.tripService.updateBarData()
 
-    if(errors == "")
+    if (errors == "")
       return
 
     alert(errors)

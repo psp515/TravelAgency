@@ -8,7 +8,7 @@
   border-radius: 12px;
   margin: 15px 0 15px 0;
   background-color: #B8C6DB;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
   grid-template-areas: "u u"
                        "s g";
   grid-template-columns: 70% 30%;
@@ -19,6 +19,7 @@
   margin: 0;
   margin-top: 10px;
   grid-area: s;
+  text-wrap: normal;
 }
 
 .review-grade{
