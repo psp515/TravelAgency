@@ -27,20 +27,16 @@
 
 ### About The Project
 
-Project created for learning angular.
-
+Project created for learning angular and as a project on AGH UST Cousrse.
 Final outcome should be a traveling agency website or smoething with cards representing holiday trip with basic information.
 
-Website will also have created logic for creating account on website, adding new trips etc.
+Project will not be continued, because I didn't enjoy writing in TypeScript.
 
 ### Built With
 
 <div>
   <a>
     <img src="https://img.shields.io/badge/-Angular-FFD64D?logo=angularjs" />
-  </a>
-    <a>
-    <img src="https://img.shields.io/badge/-Node-FFD64D?logo=nodejs" />
   </a>
   <a>
     <img src="https://img.shields.io/badge/-TypeScript-FFD64D?logo=typescript" />
