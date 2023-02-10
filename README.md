@@ -45,7 +45,7 @@ Project will not be continued, because I didn't enjoy writing in TypeScript.
 
 ### Getting Started
 
-To setup a angular project setup followe readme from website folder.
+To setup a angular project, follow readme from TravelAgency folder.
 
 ### License
 
