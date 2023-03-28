@@ -30,7 +30,7 @@
 Project created for learning angular and as a project on AGH UST Cousrse.
 Final outcome should be a traveling agency website or smoething with cards representing holiday trip with basic information.
 
-Project will not be continued, because I didn't enjoy writing in TypeScript.
+Project will not be continued, because I didn't enjoy writing in TypeScript (mayby beacause of tight schedules so I couldn't learn more about TS) but Angular is really nice framework.
 
 ### Built With
 
